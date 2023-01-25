@@ -31,3 +31,9 @@ function renderChoosenQuizz(selection) {
   }
 };
 getQuizzes();
+
+//Ação do botão de criar quizz
+function abreCriacaoQuizz(){
+  document.querySelector('.paginaInicial').classList.add('hide');
+  document.querySelector('.paginaCriacaoQuizz').classList.remove('hide');
+}

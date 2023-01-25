@@ -14,14 +14,58 @@
     <title>BuzzQuizz</title>
 </head>
 <body>
+    
     <header>
         <p class="header-title">BuzzQuizz</p>
     </header>
-    <main>
-        <p class="main-title">Todos os Quizzes</p>
-        <ul class="allQuizzes"></ul>
-    </main>
-    <footer></footer>
+    <div class="paginaInicial">
+        <main>
+            <div class="main-create">
+                <p>Você não criou nenhum quizz ainda :(</p>
+                <button onclick="abreCriacaoQuizz()">Criar Quizz</button>
+            </div>
+
+            <div class="user-list hide">
+                <div class="criaQuizz">
+                    <p class="user-title">Seus Quizzes</p>
+                    <button onclick="abreCriacaoQuizz()"><ion-icon name="add"></ion-icon></button>
+                </div>
+                <ul class="userQuizzes">
+                    <li>
+                        <div class="userQuizzes-img"></div>
+                        <p class="userQuizzes-title">O Quão Potterhead você é?</p>
+                    </li>
+                    <li>
+                        <div class="userQuizzes-img"></div>
+                        <p class="userQuizzes-title">O Quão Potterhead você é?</p>
+                    </li>
+                    <li>
+                        <div class="userQuizzes-img"></div>
+                        <p class="userQuizzes-title">O Quão Potterhead você é?</p>
+                    </li>
+                </ul>
+            </div>
+        
+            <div class="main-list">
+                <p class="main-title">Todos os Quizzes</p>
+                <ul class="allQuizzes"></ul>
+            </div>
+        </main>
+        <footer></footer>
+    </div>
+
+    <div class="paginaCriacaoQuizz hide">
+        <div class="comecoCriaQuizz">
+            <p>Comece pelo começo</p>
+            <form>
+                <input id="tituloQuizz" type="text" placeholder="Título do seu quizz">
+                <input id="imagemQuizz" type="url" placeholder="URL da imagem do seu quizz">
+                <input id="numPerguntasQuizz" type="text" placeholder="Quantidade de perguntas do quizz">
+                <input id="numNiveisQuizz" type="text" placeholder="Quantidade de níveis do quizz">
+            </form>
+            <button onclick="informacoesBasicasQuizz()">Prosseguir para criar perguntas</button>
+        </div>
+    </div>
 </body>
 
 </html>

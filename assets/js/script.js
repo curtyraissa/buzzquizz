@@ -14,7 +14,7 @@ function renderAllQuizzes(quizzInfo) {
     </li>
         `;
     }
-};
+  } ;
 function getChoosenQuizzData(selection){
     const selectionID= selection.getAttribute("id");
     axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
@@ -79,5 +79,51 @@ function selectOption(selection){
 //lista.foreach((numero) =>{
 //  numero.otherHTML
 //  })
+
+//Ação do botão de criar quizz
+function abreCriacaoQuizz(){
+  document.querySelector('.paginaInicial').classList.add('hide');
+  document.querySelector('.paginaCriacaoQuizz').classList.remove('hide');
+}
+//Pega as informações básicas do quizz criado (1ª página)
+let tituloQuizz;
+let imagemQuizzURL;
+let numDePerguntas;
+let numDeNiveis;
+
+function informacoesBasicasQuizz(){
+  tituloQuizz = 0;
+  imagemQuizzURL = 0;
+  numDePerguntas = 0;
+  numDeNiveis = 0;
+  let elemento1 = document.getElementById('tituloQuizz').value;
+  let elemento2 = document.getElementById('imagemQuizz').value;
+  let elemento3 = document.getElementById('numPerguntasQuizz').value;
+  let elemento4 = document.getElementById('numNiveisQuizz').value;
+  if(!(elemento1.length<20 || elemento1.length>65)){
+    tituloQuizz = elemento1;
+}
+
+  try {
+    let url = new URL (elemento2)
+    imagemQuizzURL = elemento2;
+  } catch(err) {
+    console.log('Erro')
+  }
+  (elemento3>=3? numDePerguntas = elemento3 : numDePerguntas = 0);
+  (elemento4>=2? numDeNiveis = elemento4: numDeNiveis = 0);
+
+  if(tituloQuizz&&imagemQuizzURL&&numDePerguntas&&numDeNiveis){
+    console.log('Deu certo!')
+    document.getElementById('tituloQuizz').value = "";
+    document.getElementById('imagemQuizz').value = "";
+    document.getElementById('numPerguntasQuizz').value = "";
+    document.getElementById('numNiveisQuizz').value = "";
+    
+  }
+  else{
+    console.log("deu erro");
+  }
+}
 
 getQuizzes();

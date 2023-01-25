@@ -60,6 +60,73 @@ main {
   border-radius: 50px;
 }
 
+.hide{
+  display: none;
+}
+/*Essa parte é para simular a imagem
+do quiz criado pelo usuário--------*/
+
+.user-title {
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+}
+
+.criaQuizz{
+  max-height:fit-content ;
+  display: flex;
+  align-items: center;
+  margin: 48px 0 12px;
+}
+
+.criaQuizz button{
+  width: 31px;
+  height: 31px;
+  background-color: #fff;
+  border: none;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.criaQuizz button ion-icon{
+  width: 31px;
+  height: 31px;
+  color: #EC362D;
+}
+
+.userQuizzes{
+  width: 1051px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.userQuizzes li{
+  position: relative;
+}
+
+.userQuizzes-img {
+  background-color: pink;
+  width: 340px;
+  height: 181px;
+  border-radius: 5px;
+}
+
+.userQuizzes-title {
+  color: red;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 22px;
+  word-break: break-word;
+  position: absolute;
+  bottom: 20px;
+  left: 17px;
+}
+
+/*--------------------------------*/
+
 .main-title {
   font-weight: 700;
   font-size: 20px;
@@ -74,6 +141,10 @@ main {
   align-items: center;
   gap: 15px;
   flex-wrap: wrap;
+}
+/*Coloca os textos encima das imagens*/
+.allQuizzes li{
+  position: relative;
 }
 
 li {
@@ -93,6 +164,9 @@ li {
   font-size: 19px;
   line-height: 22px;
   word-break: break-word;
+  position: absolute; /*Coloca os textos encima das imagens*/
+  bottom: 20px;
+  left: 17px;
 }
 
 

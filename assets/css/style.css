@@ -154,9 +154,6 @@ main {
 /*Coloca os textos encima das imagens*/
 .allQuizzes li{
   position: relative;
-}
-
-li {
   width: 340px;
 }
 
@@ -164,7 +161,6 @@ li {
   width: 340px;
   height: 181px;
   border-radius: 5px;
-  position: relative;
 }
 
 .allQuizzes-title {
@@ -179,7 +175,6 @@ li {
 }
 
 /*CSS da criação dos quizzes*/
-
 .comecoCriaQuizz{
   display: flex;
   flex-direction: column;

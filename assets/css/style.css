@@ -90,7 +90,6 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
   padding: 0;
   margin-left: 10px;
 }
@@ -213,8 +212,6 @@ li {
   padding: 27px 20px 15px 16px;
 }
 
-
-
 .paginaCriacaoQuizz input{
   width: 564px;
   height: 46px;
@@ -222,15 +219,29 @@ li {
   border: 1px solid #D1D1D1;
   border-radius: 5px;
   margin-bottom: 9px;
+  box-sizing: border-box;
+  padding-left: 23px;
+}
+
+.paginaCriacaoQuizz input::placeholder{ 
   color: #bababa;
   font-family: 'Roboto';
   font-style: italic;
   font-weight: 400;
   font-size: 19px;
   line-height: 22px;
-  box-sizing: border-box;
-  padding-left: 23px;
 }
+
+.paginaCriacaoQuizz input[type=text],
+.paginaCriacaoQuizz input[type=url]  {
+  color: #000;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 22px;
+}
+
 .paginaCriacaoQuizz button{
   background-color: #EC362D;
   min-height: 54px;
@@ -244,7 +255,6 @@ li {
   line-height: 25px;
   margin-top: 85px;
   padding: 0 35px;
-  border: none;
 }
 
 .paginaCriacaoQuizz button:hover{

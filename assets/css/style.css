@@ -7,6 +7,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
+  background: #FAFAFA;
 }
 
 header {
@@ -24,10 +25,39 @@ header {
   color: #FFFFFF;
 }
 
-main { 
+main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.main-create {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 70px 0px 0px;
+  width: 1051px;
+  height: 181px;
+  border: 1px dashed #D5D5D5;
+  border-radius: 5px;
+}
+
+.main-create p {
+  width: 250px;
+  padding: 30px 10px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  color: #B9B9B9;
+}
+
+.main-create button {
+  width: 151px;
+  height: 40px;
+  background: #FAFAFA;
+  border: 1px dashed #EC362D;
+  border-radius: 50px;
 }
 
 .main-title {
@@ -46,7 +76,7 @@ main {
   flex-wrap: wrap;
 }
 
-li{
+li {
   width: 340px;
 }
 

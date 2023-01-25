@@ -71,7 +71,6 @@ function informacoesBasicasQuizz(){
     document.getElementById('imagemQuizz').value = "";
     document.getElementById('numPerguntasQuizz').value = "";
     document.getElementById('numNiveisQuizz').value = "";
-    
   }
   else{
     console.log("deu erro");

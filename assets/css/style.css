@@ -64,8 +64,21 @@ li{
   line-height: 22px;
   word-break: break-word;
 }
+/*
+As duas classes abaixo estão presentes aqui no CSS e no Javascript somente para melhor visualização
+Se precisar, sinta-se livre para fazer o que quizer... apagar, mudar etc
+*/
+.question-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #EC362D;
+  flex-direction: column;
+}
 
-
+.question-declaration{
+  background-color: blue;
+}
 @media (max-width: 375px) {
   /* mobile */
 }

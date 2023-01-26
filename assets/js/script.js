@@ -1,4 +1,4 @@
-let currentQuizzData = undefined;
+let currentQuizzData, currentMinValue, storedValue, storedValueLevel = undefined;
 function getQuizzes() {
   const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
   promise.then(renderAllQuizzes);
@@ -108,27 +108,39 @@ function autoQuizzScroll(){
 function selectionCounter(){
     const answerCounter = document.querySelectorAll(".selected")
     if (answerCounter.length === currentQuizzData.data.questions.length){
-      //answerCheck();
+      answerCheck();
     }
 }
-/*
-function answerCheck(){
-      const correctAnswerCounter = document.querySelectorAll(".selected.true").length
-      const correctAnswerPercent = (correctAnswerCounter/currentQuizzData.data.questions.length)
-      const quizzes = document.querySelector(".allQuizzes");
-      quizzes.innerHTML += `
+
+function answerCheck() {
+	const correctAnswerCounter = document.querySelectorAll(".selected.true").length
+	const correctAnswerPercent = Math.round((correctAnswerCounter / currentQuizzData.data.questions.length) * 100)
+  
+	storedValue = currentQuizzData.data.levels[0].minValue;
+  storedValueLevel = currentQuizzData.data.levels[0]
+
+	for (let i = 0; i < currentQuizzData.data.levels.length; i++) {
+		currentMinValue = currentQuizzData.data.levels[i].minValue;
+    if (currentQuizzData.data.levels[i].minValue <= correctAnswerPercent) {
+      if (storedValue <= currentMinValue){
+        storedValue = currentMinValue;
+        storedValueLevel = currentQuizzData.data.levels[i]
+      }
+    }
+		}
+  const quizzes = document.querySelector(".allQuizzes");
+	quizzes.innerHTML += `
         <div>
           <div>
-            <p>${correctAnswerPercent} de acerto: ${currentQuizzData.data.levels[i].title}</p>
+            <p>${correctAnswerPercent}% de acerto: ${storedValueLevel.title}</p>
           </div>
           <div>
-            <img src="${currentQuizzData.data.levels[i].image}" alt="">
-            <p>${currentQuizzData.data.levels[i].text}</p>
+            <img src="${storedValueLevel.image}" alt="">
+            <p>${storedValueLevel.text}</p>
           </div>
         </div>
       `;
 }
-*/
 
 function abreCriacaoQuizz(){
   document.querySelector('.paginaInicial').classList.add('hide');

@@ -271,7 +271,11 @@ Se precisar, sinta-se livre para fazer o que quizer... apagar, mudar etc
   cursor: pointer;
 }
 
-
+.opacidade{
+  background-color:black;
+  color: grey;
+  opacity: 0.6;
+}
 
 @media (max-width: 375px) {
   /* mobile */

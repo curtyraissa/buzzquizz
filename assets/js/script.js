@@ -37,21 +37,17 @@ function renderChoosenQuizz(quizzInfo){
         <p>${quizzInfo.data.questions[i].title}</p>
       </div>
       <div class="unanswered options-of-question-${i}">
-      
-      
-      
       </div>
     </div>`
-
+    quizzInfo.data.questions[i].answers.sort(shuffle);
   }
   for (let i=0; i<quizzInfo.data.questions.length;i++){
     //Percorre todas as divs de questões.
     const quizzOptions = document.querySelector(`.options-of-question-${i}`)
     quizzOptions.innerHTML=""
     for (let j=0; j<quizzInfo.data.questions[i].answers.length;j++){
-      quizzInfo.data.questions[i].answers.sort(shuffle);
       quizzOptions.innerHTML+=`
-      <div class="unselected" onclick="selectOption(this)">
+      <div class="unselected option ${quizzInfo.data.questions[i].answers[j].isCorrectAnswer}" onclick="selectOption(this)">
         <img src="${quizzInfo.data.questions[i].answers[j].image}" alt="">
         <p>${quizzInfo.data.questions[i].answers[j].text}</p>
       </div>
@@ -63,14 +59,19 @@ function renderChoosenQuizz(quizzInfo){
 function shuffle() {
   return Math.random() - 0.5;
 }
+
 function selectOption(selection){
   //console.log(selection)
   //console.log(currentQuizzData)
   if (!selection.parentNode.classList.contains("answered")){
     selection.classList.replace("unselected","selected")
     selection.parentNode.classList.replace("unanswered","answered")
-    let x = document.querySelectorAll("div.answered .unselected")
-    console.log(x)
+    let acinzentados = document.querySelectorAll("div.answered .unselected")
+    acinzentados.forEach(div => {
+      if (div.outerHTML !== selection.outerHTML){
+        div.classList.add("opacidade")
+      }
+    })
   } else {
     return true;
   }

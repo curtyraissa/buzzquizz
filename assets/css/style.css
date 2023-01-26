@@ -283,10 +283,14 @@ main {
   line-height: 25px;
   margin-top: 85px;
   padding: 0 35px;
+  border: none
 }
 
 .paginaCriacaoQuizz button:hover {
   cursor: pointer;
+  background-color: var(--red-100);
+  color: var(--red);
+  border: 1px solid var(--red);
 }
 
 @media (max-width: 376px) {
@@ -320,4 +324,30 @@ main {
     justify-content: space-between;
     margin: 38px 0 16px 0;
   }
+
+
+  /* tela criacao do quiz */
+  .comecoCriaQuizz{
+    margin-top: 37px;
+  }
+
+  .comecoCriaQuizz p {
+    margin-bottom: 29px;
+  }
+
+  .comecoCriaQuizz form{
+    width: 375px;
+  }
+
+  .paginaCriacaoQuizz input {
+    width: 341px;
+  }
+
+  .paginaCriacaoQuizz button {
+    margin-top: 29px;
+    width: 323px;
+    font-size: 18px;
+  }
+
+
 }

@@ -181,13 +181,13 @@ Se precisar, sinta-se livre para fazer o que quizer... apagar, mudar etc
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #EC362D;
+  background-color: pink;
   flex-direction: column;
 }
 
 /*CSS da criação dos quizzes*/
 .question-declaration{
-  background-color: blue;
+  background-color: antiquewhite;
 }
 
 .comecoCriaQuizz{
@@ -276,7 +276,12 @@ Se precisar, sinta-se livre para fazer o que quizer... apagar, mudar etc
   color: grey;
   opacity: 0.6;
 }
-
+.correto{
+  color: green;
+}
+.incorreto{
+  color: red;
+}
 @media (max-width: 375px) {
   /* mobile */
 }

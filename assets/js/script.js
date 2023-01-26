@@ -66,18 +66,34 @@ function selectOption(selection){
   if (!selection.parentNode.classList.contains("answered")){
     selection.classList.replace("unselected","selected")
     selection.parentNode.classList.replace("unanswered","answered")
+
+
     let acinzentados = document.querySelectorAll("div.answered .unselected")
+    //altera as divs irmãs da selecionada
     acinzentados.forEach(div => {
       if (div.outerHTML !== selection.outerHTML){
         div.classList.add("opacidade")
       }
     })
+    correctAnswerTextChange();
+    incorrectAnswerTextChnge();
     setTimeout(autoQuizzScroll, 2000)
   } else {
     return true;
   }
 }
-
+function correctAnswerTextChange(){
+  let corretos = document.querySelectorAll("div.answered .true p")
+  corretos.forEach(div => {
+      div.classList.add("correto")
+  })
+}
+function incorrectAnswerTextChnge(){
+  let incorretos = document.querySelectorAll("div.answered .false p")
+  incorretos.forEach(div => {
+      div.classList.add("incorreto")
+  })
+}
 function autoQuizzScroll(){
     if (document.querySelector(".unanswered") == null){
       return true;

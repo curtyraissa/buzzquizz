@@ -123,11 +123,13 @@ main {
   margin-left: 10px;
   border: none;
 }
+ion-icon{
+  width: 30px;
+  height: 30px
+}
 
 .criaQuizz button ion-icon {
   border-radius: 50px;
-  width: 30px;
-  height: 30px;
   color: var(--red);
   background-color: var(--white);
 }
@@ -303,6 +305,15 @@ Se precisar, sinta-se livre para fazer o que quizer... apagar, mudar etc
   width: 100%;
   font-size: 20px;
   line-height: 23px;
+}
+
+.container {
+  background-color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
 }
 
 .mt-18 {

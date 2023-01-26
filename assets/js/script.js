@@ -31,9 +31,13 @@ function renderChoosenQuizz(quizzInfo){
   `
   //Aqui embaixo é inserido cada questão individual do Quizz
   for (let i=0; i<quizzInfo.data.questions.length;i++){
+    /*
+    Na função abaixo deve ser incluso a cor de cada pergunta individual!
+               
+    */
     quizzes.innerHTML+=`
     <div class="unanswered question-box">
-      <div class="question-declaration">
+      <div class="question-declaration" style="background-color:${quizzInfo.data.questions[i].color}">
         <p>${quizzInfo.data.questions[i].title}</p>
       </div>
       <div class="options-of-question-${i}">

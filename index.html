@@ -19,7 +19,7 @@
     <header>
         <p class="header-title">BuzzQuizz</p>
     </header>
-    <div class="paginaInicial hide">
+    <div class="paginaInicial">
         <main>
             <div class="main-create">
                 <p>Você não criou nenhum quizz ainda :(</p>
@@ -61,7 +61,7 @@
 
     <div class="paginaCriacaoQuizz">
         <div class="comecoCriaQuizz hide">
-            <p>Comece pelo começo</p>
+            <p class="mb-27">Comece pelo começo</p>
             <form>
                 <input id="tituloQuizz" type="text" placeholder="Título do seu quizz">
                 <input id="imagemQuizz" type="url" placeholder="URL da imagem do seu quizz">
@@ -101,37 +101,7 @@
         </div>
 
 
-        <div class="nivelCriaQuizz">
-            <p class="mb-27">Agora, decida os níveis</p>
-
-            <div class="box-form pt-00">
-                <div class="container">
-                    <p>Nível 1</p>
-                    <ion-icon onclick="abreFormulario(this)" name="create-outline"></ion-icon>
-                </div>
-                <form class="hide">
-                    <input class="nivel-titulo" id="tituloNivel1" type="text" placeholder="Título do nível">
-                    <input class="nivel-acerto-minimo" id="acertoMinimo1" type="text" placeholder="% de acerto mínima">
-                    <input class="nivel-URL" id="imgNivel1" type="url" placeholder="URL da imagem do nível">
-                    <input class="nivel-descricao" id="descricaoNivel1" type="text" placeholder="Descrição do nível">
-                </form>
-            </div>
-
-            <div class="box-form pt-00">
-                <div class="container">
-                    <p>Nível 2</p>
-                    <ion-icon onclick="abreFormulario(this)" name="create-outline"></ion-icon>
-                </div>
-                <form class="hide">
-                    <input class="nivel-titulo" id="tituloNivel2" type="text" placeholder="Título do nível">
-                    <input class="nivel-acerto-minimo" id="acertoMinimo2" type="text" placeholder="% de acerto mínima">
-                    <input class="nivel-URL" id="imgNivel2" type="url" placeholder="URL da imagem do nível">
-                    <input class="nivel-descricao" id="descricaoNivel2" type="text" placeholder="Descrição do nível">
-                </form>
-            </div>
-            <p class="invisible">Os dados inseridos não são válidos!</p>
-            <button onclick="informacoesNivelQuizz()">Prosseguir para criar perguntas</button>
-        </div>
+        <div class="nivelCriaQuizz hide"></div>
     </div>
 </body>
 

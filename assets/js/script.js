@@ -121,32 +121,33 @@ function informacoesBasicasQuizz(){
   imagemQuizzURL = 0;
   numDePerguntas = 0;
   numDeNiveis = 0;
-  let elemento1 = document.getElementById('tituloQuizz').value;
-  let elemento2 = document.getElementById('imagemQuizz').value;
-  let elemento3 = document.getElementById('numPerguntasQuizz').value;
-  let elemento4 = document.getElementById('numNiveisQuizz').value;
+  const elemento1 = document.getElementById('tituloQuizz');
+  const elemento2 = document.getElementById('imagemQuizz');
+  const elemento3 = document.getElementById('numPerguntasQuizz');
+  const elemento4 = document.getElementById('numNiveisQuizz');
   if(!(elemento1.length<20 || elemento1.length>65)){
-    tituloQuizz = elemento1;
+    tituloQuizz = elemento1.value;
 }
 
   try {
-    let url = new URL (elemento2)
-    imagemQuizzURL = elemento2;
+    let url = new URL (elemento2.value)
+    imagemQuizzURL = elemento2.value;
   } catch(err) {
-    elemento2 = 0;
+    imagemQuizzURL = 0;
   }
-  (elemento3>=3? numDePerguntas = elemento3 : numDePerguntas = 0);
-  (elemento4>=2? numDeNiveis = elemento4: numDeNiveis = 0);
+  (elemento3.value>=3? numDePerguntas = elemento3.value : numDePerguntas = 0);
+  (elemento4.value>=2? numDeNiveis = elemento4.value: numDeNiveis = 0);
 
   const alerta = document.querySelector('.comecoCriaQuizz .invisible');
+  console.log(tituloQuizz, imagemQuizzURL ,numDeNiveis ,numDePerguntas);
 
   if(tituloQuizz&&imagemQuizzURL&&numDePerguntas&&numDeNiveis){
     document.querySelector('.comecoCriaQuizz').classList.add('hide');
     document.querySelector('.perguntasCriaQuizz').classList.remove('hide');
-    document.getElementById('tituloQuizz').value = "";
-    document.getElementById('imagemQuizz').value = "";
-    document.getElementById('numPerguntasQuizz').value = "";
-    document.getElementById('numNiveisQuizz').value = "";
+    elemento1.value = "";
+    elemento2.value = "";
+    elemento3.value = "";
+    elemento4.value = "";
     alerta.classList.remove('alert');
   }
   else{
@@ -159,36 +160,60 @@ function mensagemAlerta(texto){
   setTimeout(() =>{texto.classList.add('alert');}, 300);
 }
 //Pega as informações do nível (2ª página)
-let tituloNivel;
-let acertoMinimoNivel;
-let urlNivel;
-let descricaoNivel;
+
+function criarPerguntasQuizz(){
+  document.querySelector('.perguntasCriaQuizz.comecoCriaQuizz').classList.add('hide');
+  document.querySelector('.nivelCriaQuizz').classList.remove('hide');
+  criaPaginaDosNiveis();
+}
+
+//Pega as informações do nível (3ª página)
+
+let niveis=[];
 
 function criaPaginaDosNiveis(){
-
+  numDeNiveis = Number(numDeNiveis);
+  const boxForm = document.querySelector('.nivelCriaQuizz');
+  boxForm.innerHTML = '<p class="mb-27">Agora, decida os níveis</p>';
+  for(let i = 0; i<numDeNiveis; i++){
+    boxForm.innerHTML+=`
+      <div class="box-form pt-00">
+        <div class="container">
+            <p>Nível ${i+1}</p>
+            <ion-icon onclick="abreFormulario(this)" name="create-outline"></ion-icon>
+        </div>
+        <form class="hide">
+            <input class="nivel-titulo" type="text" placeholder="Título do nível">
+            <input class="nivel-acerto-minimo" type="text" placeholder="% de acerto mínima">
+            <input class="nivel-URL" type="url" placeholder="URL da imagem do nível">
+            <input class="nivel-descricao" type="text" placeholder="Descrição do nível">
+        </form>
+      </div>`
+  }
+  boxForm.innerHTML+=`
+  <p class="invisible">Os dados inseridos não são válidos!</p>
+  <button onclick="informacoesNivelQuizz()">Prosseguir para criar perguntas</button>`
 }
 
 function informacoesNivelQuizz(){
-
+  niveis=[];
   const alerta = document.querySelector('.nivelCriaQuizz .invisible');
-  let elemento1 = document.querySelectorAll('.nivel-titulo');
-  let elemento2 = document.querySelectorAll('.nivel-acerto-minimo');
-  let elemento3 = document.querySelectorAll('.nivel-URL');
-  let elemento4 = document.querySelectorAll('.nivel-descricao');
+  const elemento1 = document.querySelectorAll('.nivel-titulo');
+  const elemento2 = document.querySelectorAll('.nivel-acerto-minimo');
+  const elemento3 = document.querySelectorAll('.nivel-URL');
+  const elemento4 = document.querySelectorAll('.nivel-descricao');
   let aux = true;
   let aux2 = false;
 //Validação dos dados
   elemento1.forEach((valor)=>{
     if(valor.value.length<10){
       aux = false;
-      console.log('aqui');
     }
   });
 
   elemento2.forEach((valor)=>{
     if(valor.value<0||valor.value>100){
       aux = false;
-      console.log('aqui');
     }
     if(valor.value==0){
       aux2 = true;
@@ -200,23 +225,32 @@ function informacoesNivelQuizz(){
     let url = new URL (valor.value);
   } catch(err) {
     aux = false;
-    console.log('aqui');
   }
-});
+  });
 
-elemento4.forEach((valor)=>{
-  if(valor.value.length<30){
-    aux = false;
-    console.log('aqui');
+  elemento4.forEach((valor)=>{
+    if(valor.value.length<30){
+      aux = false;
+    }
+  });
+
+    if(!(aux&&aux2)){
+      mensagemAlerta(alerta);
+      return;
+    }
+  //Validação dos dados
+
+  //Tratamento dos dados
+  for(let i=0; i<elemento1.length; i++){
+    niveis.push({title: elemento1[i].value,
+    image: elemento3[i].value,
+    text: elemento4[i].value,
+    minValue: elemento2[i].value});
   }
-});
-
-  if(!(aux&&aux2)){
-    mensagemAlerta(alerta);
-    return;
-  }
-//Validação dos dados
-
+  elemento1.forEach((valor)=> {valor.value = "";});
+  elemento2.forEach((valor)=> {valor.value = "";});
+  elemento3.forEach((valor)=> {valor.value = "";});
+  elemento4.forEach((valor)=> {valor.value = "";});
 }
 
 getQuizzes();

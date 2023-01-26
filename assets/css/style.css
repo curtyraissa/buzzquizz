@@ -221,7 +221,7 @@ ion-icon {
 
 .nivelCriaQuizz p,
 .comecoCriaQuizz p{
-  color: #000000;
+  color: var(--black);
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -230,7 +230,7 @@ ion-icon {
 }
 
 .mb-27{
-  margin-bottom: 27px;
+  margin-bottom: 43px;
 }
 
 .comecoCriaQuizz-title {
@@ -252,6 +252,11 @@ ion-icon {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
   padding: 27px 20px 15px 16px;
   margin-bottom: 24px;
+}
+
+.paginaCriacaoQuizz ion-icon:hover{
+  cursor: pointer;
+  opacity: .6;
 }
 
 .paginaCriacaoQuizz input {
@@ -290,6 +295,7 @@ ion-icon {
   font-weight: 400;
   font-size: 21px;
   line-height: 25px;
+  margin-top: 40px;
   margin-bottom: 30px;
   padding: 0 35px;
   border: none;
@@ -331,17 +337,18 @@ ion-icon {
   padding-top: 0;
 }
 
+p.invisible {
+  opacity: 0;
+  margin-top: 0;
+}
+
 p.invisible.alert {
-  color: #EC362D;
+  color: var(--red);
   margin-top: 0;
   opacity: 1;
   transition: .5s;
 }
 
-p.invisible {
-  opacity: 0;
-  margin-top: 0;
-}
 
 
 /*

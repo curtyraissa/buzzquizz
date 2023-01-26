@@ -14,7 +14,7 @@ function renderAllQuizzes(quizzInfo) {
     </li>
         `;
     }
-  } ;
+  };
 function getChoosenQuizzData(selection){
     const selectionID= selection.getAttribute("id");
     axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
@@ -55,6 +55,7 @@ function renderChoosenQuizz(quizzInfo){
     }
   }
   currentQuizzData=quizzInfo;
+  document.querySelector(".main-list").scrollIntoView();
 }
 function shuffle() {
   return Math.random() - 0.5;
@@ -137,7 +138,7 @@ function answerCheck() {
             <p>${storedValueLevel.text}</p>
           </div>
         </div>
-        <button>
+        <button onclick="restartQuizz()">
           <p>Reiniciar Quizz</p>
         </button>
         <button onclick="returnHome()">
@@ -146,6 +147,11 @@ function answerCheck() {
       `;
   setTimeout(autoScrollQuizzResult, 2000)
 }
+function restartQuizz(){
+    const selectionID= currentQuizzData.data.id
+    axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
+    .then(renderChoosenQuizz);
+};
 function returnHome(){
   getQuizzes()
   document.querySelector("body").scrollIntoView();

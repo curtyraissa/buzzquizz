@@ -32,7 +32,7 @@ function renderChoosenQuizz(quizzInfo){
   //Aqui embaixo é inserido cada questão individual do Quizz
   for (let i=0; i<quizzInfo.data.questions.length;i++){
     quizzes.innerHTML+=`
-    <div class="question-box">
+    <div class="question-box unchecked">
       <div class="question-declaration">
         <p>${quizzInfo.data.questions[i].title}</p>
       </div>
@@ -68,7 +68,7 @@ function selectOption(selection){
     selection.parentNode.classList.replace("unanswered","answered")
 
 
-    let acinzentados = document.querySelectorAll("div.answered .unselected")
+    const acinzentados = document.querySelectorAll("div.answered .unselected")
     //altera as divs irmãs da selecionada
     acinzentados.forEach(div => {
       if (div.outerHTML !== selection.outerHTML){
@@ -78,30 +78,57 @@ function selectOption(selection){
     correctAnswerTextChange();
     incorrectAnswerTextChnge();
     setTimeout(autoQuizzScroll, 2000)
+    selectionCounter();
   } else {
     return true;
   }
 }
 function correctAnswerTextChange(){
-  let corretos = document.querySelectorAll("div.answered .true p")
+  const corretos = document.querySelectorAll("div.answered .true p")
   corretos.forEach(div => {
       div.classList.add("correto")
   })
 }
 function incorrectAnswerTextChnge(){
-  let incorretos = document.querySelectorAll("div.answered .false p")
+  const incorretos = document.querySelectorAll("div.answered .false p")
   incorretos.forEach(div => {
       div.classList.add("incorreto")
   })
 }
 function autoQuizzScroll(){
+  /*
+  BUG WARNING: Função está dando scroll automático na "resposta" da questão, e não na caixa da questão em sí!
+  */
     if (document.querySelector(".unanswered") == null){
       return true;
     } else {
       document.querySelector(".unanswered").scrollIntoView();
     }
 }
-
+function selectionCounter(){
+    const answerCounter = document.querySelectorAll(".selected")
+    if (answerCounter.length === currentQuizzData.data.questions.length){
+      //answerCheck();
+    }
+}
+/*
+function answerCheck(){
+      const correctAnswerCounter = document.querySelectorAll(".selected.true").length
+      const correctAnswerPercent = (correctAnswerCounter/currentQuizzData.data.questions.length)
+      const quizzes = document.querySelector(".allQuizzes");
+      quizzes.innerHTML += `
+        <div>
+          <div>
+            <p>${correctAnswerPercent} de acerto: ${currentQuizzData.data.levels[i].title}</p>
+          </div>
+          <div>
+            <img src="${currentQuizzData.data.levels[i].image}" alt="">
+            <p>${currentQuizzData.data.levels[i].text}</p>
+          </div>
+        </div>
+      `;
+}
+*/
 
 function abreCriacaoQuizz(){
   document.querySelector('.paginaInicial').classList.add('hide');

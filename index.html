@@ -19,7 +19,7 @@
     <header>
         <p class="header-title">BuzzQuizz</p>
     </header>
-    <div class="paginaInicial">
+    <div class="paginaInicial hide">
         <main>
             <div class="main-create">
                 <p>Você não criou nenhum quizz ainda :(</p>
@@ -101,26 +101,36 @@
         </div>
 
 
-        <div class="nivelCriaQuizz hide">
-            <p>Agora, decida os níveis</p>
+        <div class="nivelCriaQuizz">
+            <p class="mb-27">Agora, decida os níveis</p>
 
-            <form>
-                <p>Nível 1</p>
-                <input id="tituloQuizz" type="text" placeholder="Título do seu quizz">
-                <input id="imagemQuizz" type="url" placeholder="URL da imagem do seu quizz">
-                <input id="numPerguntasQuizz" type="text" placeholder="Quantidade de perguntas do quizz">
-                <input id="numNiveisQuizz" type="text" placeholder="Quantidade de níveis do quizz">
-            </form>
+            <div class="box-form pt-00">
+                <div class="container">
+                    <p>Nível 1</p>
+                    <ion-icon onclick="abreFormulario(this)" name="create-outline"></ion-icon>
+                </div>
+                <form class="hide">
+                    <input class="nivel-titulo" id="tituloNivel1" type="text" placeholder="Título do nível">
+                    <input class="nivel-acerto-minimo" id="acertoMinimo1" type="text" placeholder="% de acerto mínima">
+                    <input class="nivel-URL" id="imgNivel1" type="url" placeholder="URL da imagem do nível">
+                    <input class="nivel-descricao" id="descricaoNivel1" type="text" placeholder="Descrição do nível">
+                </form>
+            </div>
 
-            <form>
-                <p>Nível 2</p>
-                <input id="tituloQuizz" type="text" placeholder="Título do seu quizz">
-                <input id="imagemQuizz" type="url" placeholder="URL da imagem do seu quizz">
-                <input id="numPerguntasQuizz" type="text" placeholder="Quantidade de perguntas do quizz">
-                <input id="numNiveisQuizz" type="text" placeholder="Quantidade de níveis do quizz">
-            </form>
+            <div class="box-form pt-00">
+                <div class="container">
+                    <p>Nível 2</p>
+                    <ion-icon onclick="abreFormulario(this)" name="create-outline"></ion-icon>
+                </div>
+                <form class="hide">
+                    <input class="nivel-titulo" id="tituloNivel2" type="text" placeholder="Título do nível">
+                    <input class="nivel-acerto-minimo" id="acertoMinimo2" type="text" placeholder="% de acerto mínima">
+                    <input class="nivel-URL" id="imgNivel2" type="url" placeholder="URL da imagem do nível">
+                    <input class="nivel-descricao" id="descricaoNivel2" type="text" placeholder="Descrição do nível">
+                </form>
+            </div>
             <p class="invisible">Os dados inseridos não são válidos!</p>
-            <button onclick="informacoesBasicasQuizz()">Prosseguir para criar perguntas</button>
+            <button onclick="informacoesNivelQuizz()">Prosseguir para criar perguntas</button>
         </div>
     </div>
 </body>

@@ -91,13 +91,6 @@ main {
   border: 1px dashed var(--white);
 }
 
-.user-list.hide,
-.comecoCriaQuizz.hide,
-.nivelCriaQuizz.hide,
-.hide{
-  display: none;
-}
-
 .user-list {
   display: flex;
   flex-direction: column;
@@ -221,7 +214,7 @@ ion-icon {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 564px;
+  max-width: 600px;
   margin:0 auto ;
   margin-top: 71px;
 }
@@ -234,6 +227,9 @@ ion-icon {
   font-weight: 700;
   font-size: 23px;
   line-height: 27px;
+}
+
+.mb-27{
   margin-bottom: 27px;
 }
 
@@ -245,17 +241,7 @@ ion-icon {
   margin-bottom: 48px;
 }
 
-.nivelCriaQuizz form p{
-  color: #000000;
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 23px;
-  margin-bottom: 12px;
-}
-
-.paginaCriacaoQuizz form {
+.box-form{
   background-color: var(--white);
   width: 600px;
   box-sizing: border-box;
@@ -329,13 +315,20 @@ ion-icon {
   background-color: var(--white);
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: row;
-  width: 100%;
+  box-sizing: border-box;
+  min-width: 100%;
+  height: 74px;
+  padding: 0 20px 0 16px;
 }
 
 .mt-18 {
   margin-top: 18px;
+}
+
+.pt-00{
+  padding-top: 0;
 }
 
 p.invisible.alert {
@@ -364,6 +357,11 @@ Classes pertinentes ao requisito "Comportamento das respostas"
 
 .incorreto {
   color: red;
+}
+
+
+.hide{
+  display: none;
 }
 
 @media (max-width: 376px) {

@@ -107,6 +107,9 @@ function abreCriacaoQuizz(){
   document.querySelector('.paginaInicial').classList.add('hide');
   document.querySelector('.comecoCriaQuizz').classList.remove('hide');
 }
+function abreFormulario(caixa){
+  caixa.parentNode.parentNode.querySelector('form').classList.toggle('hide');
+}
 //Pega as informações básicas do quizz criado (1ª página)
 let tituloQuizz;
 let imagemQuizzURL;
@@ -147,9 +150,73 @@ function informacoesBasicasQuizz(){
     alerta.classList.remove('alert');
   }
   else{
-    alerta.classList.remove('alert');
-    setTimeout(() =>{alerta.classList.add('alert');}, 300);
+    mensagemAlerta(alerta);
   }
+}
+
+function mensagemAlerta(texto){
+  texto.classList.remove('alert');
+  setTimeout(() =>{texto.classList.add('alert');}, 300);
+}
+//Pega as informações do nível (2ª página)
+let tituloNivel;
+let acertoMinimoNivel;
+let urlNivel;
+let descricaoNivel;
+
+function criaPaginaDosNiveis(){
+
+}
+
+function informacoesNivelQuizz(){
+
+  const alerta = document.querySelector('.nivelCriaQuizz .invisible');
+  let elemento1 = document.querySelectorAll('.nivel-titulo');
+  let elemento2 = document.querySelectorAll('.nivel-acerto-minimo');
+  let elemento3 = document.querySelectorAll('.nivel-URL');
+  let elemento4 = document.querySelectorAll('.nivel-descricao');
+  let aux = true;
+  let aux2 = false;
+//Validação dos dados
+  elemento1.forEach((valor)=>{
+    if(valor.value.length<10){
+      aux = false;
+      console.log('aqui');
+    }
+  });
+
+  elemento2.forEach((valor)=>{
+    if(valor.value<0||valor.value>100){
+      aux = false;
+      console.log('aqui');
+    }
+    if(valor.value==0){
+      aux2 = true;
+    }
+  });
+
+  elemento3.forEach((valor)=>{
+    try {
+    let url = new URL (valor.value);
+  } catch(err) {
+    aux = false;
+    console.log('aqui');
+  }
+});
+
+elemento4.forEach((valor)=>{
+  if(valor.value.length<30){
+    aux = false;
+    console.log('aqui');
+  }
+});
+
+  if(!(aux&&aux2)){
+    mensagemAlerta(alerta);
+    return;
+  }
+//Validação dos dados
+
 }
 
 getQuizzes();

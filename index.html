@@ -26,8 +26,8 @@
                 <button onclick="abreCriacaoQuizz()">Criar Quizz</button>
             </div>
 
-            <div class="user-list hide">
-                <div class="criaQuizz hide">
+            <div class="hide user-list">
+                <div class="criaQuizz">
                     <p class="user-title">Seus Quizzes</p>
                     <button onclick="abreCriacaoQuizz()"><ion-icon name="add-circle"></ion-icon></button>
                 </div>
@@ -50,7 +50,7 @@
                     </li>
                 </ul>
             </div>
-                    
+
             <div class="main-list">
                 <p class="main-title">Todos os Quizzes</p>
                 <ul class="allQuizzes"></ul>
@@ -60,18 +60,19 @@
     </div>
 
     <div class="paginaCriacaoQuizz">
-        <!-- <div class="comecoCriaQuizz">
-            <p>Comece pelo começo</p>
+        <div class="comecoCriaQuizz hide">
+            <p class="mb-27">Comece pelo começo</p>
             <form>
                 <input id="tituloQuizz" type="text" placeholder="Título do seu quizz">
                 <input id="imagemQuizz" type="url" placeholder="URL da imagem do seu quizz">
                 <input id="numPerguntasQuizz" type="text" placeholder="Quantidade de perguntas do quizz">
                 <input id="numNiveisQuizz" type="text" placeholder="Quantidade de níveis do quizz">
             </form>
+            <p class="invisible">Os dados inseridos não são válidos!</p>
             <button onclick="informacoesBasicasQuizz()">Prosseguir para criar perguntas</button>
-        </div> -->
+        </div> 
 
-        <div class="comecoCriaQuizz">
+        <div class="perguntasCriaQuizz comecoCriaQuizz hide">
             <p class="comecoCriaQuizz-title">Crie suas perguntas</p>
             <form>
                 <p class="comecoCriaQuizz-question">Pergunta 1</p>
@@ -98,6 +99,9 @@
             </div>
             <button onclick="criarPerguntasQuizz()">Prosseguir pra criar níveis</button>
         </div>
+
+
+        <div class="nivelCriaQuizz hide"></div>
     </div>
 </body>
 

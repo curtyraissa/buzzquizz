@@ -60,19 +60,23 @@ function informacoesBasicasQuizz(){
     let url = new URL (elemento2)
     imagemQuizzURL = elemento2;
   } catch(err) {
-    console.log('Erro')
+    elemento2 = 0;
   }
   (elemento3>=3? numDePerguntas = elemento3 : numDePerguntas = 0);
   (elemento4>=2? numDeNiveis = elemento4: numDeNiveis = 0);
 
+  const alerta = document.querySelector('.comecoCriaQuizz .invisible');
+
   if(tituloQuizz&&imagemQuizzURL&&numDePerguntas&&numDeNiveis){
-    console.log('Deu certo!')
+    document.querySelector('.comecoCriaQuizz').classList.add('hide');
     document.getElementById('tituloQuizz').value = "";
     document.getElementById('imagemQuizz').value = "";
     document.getElementById('numPerguntasQuizz').value = "";
     document.getElementById('numNiveisQuizz').value = "";
+    alerta.classList.remove('alert');
   }
   else{
-    console.log("deu erro");
+    alerta.classList.remove('alert');
+    setTimeout(() =>{alerta.classList.add('alert');}, 300);
   }
 }

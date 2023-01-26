@@ -18,7 +18,7 @@
     <header>
         <p class="header-title">BuzzQuizz</p>
     </header>
-    <div class="paginaInicial">
+    <div class="paginaInicial hide">
         <main>
             <div class="main-create">
                 <p>Você não criou nenhum quizz ainda :(</p>
@@ -54,7 +54,7 @@
         <footer></footer>
     </div>
 
-    <div class="paginaCriacaoQuizz hide">
+    <div class="paginaCriacaoQuizz">
         <div class="comecoCriaQuizz">
             <p>Comece pelo começo</p>
             <form>
@@ -63,6 +63,7 @@
                 <input id="numPerguntasQuizz" type="text" placeholder="Quantidade de perguntas do quizz">
                 <input id="numNiveisQuizz" type="text" placeholder="Quantidade de níveis do quizz">
             </form>
+            <p class="invisible">Os dados inseridos não são válidos!</p>
             <button onclick="informacoesBasicasQuizz()">Prosseguir para criar perguntas</button>
         </div>
     </div>

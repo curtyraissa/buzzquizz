@@ -65,6 +65,7 @@ main {
   border: 3px grey solid;
 }
 
+.comecoCriaQuizz.hide,
 .hide{
   display: none;
 }
@@ -249,12 +250,21 @@ main {
   font-weight: 400;
   font-size: 21px;
   line-height: 25px;
-  margin-top: 85px;
+  margin-top: 0px;
   padding: 0 35px;
 }
 
 .paginaCriacaoQuizz button:hover{
   cursor: pointer;
+}
+
+p.invisible.alert{
+  color: #EC362D;
+  opacity: 1;
+  transition: .5s;
+}
+p.invisible{
+  opacity: 0;
 }
 
 

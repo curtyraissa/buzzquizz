@@ -19,15 +19,15 @@
     <header>
         <p class="header-title">BuzzQuizz</p>
     </header>
-    <div class="paginaInicial hide">
+    <div class="paginaInicial">
         <main>
             <div class="main-create">
                 <p>Você não criou nenhum quizz ainda :(</p>
                 <button onclick="abreCriacaoQuizz()">Criar Quizz</button>
             </div>
 
-            <div class="user-list hide">
-                <div class="criaQuizz hide">
+            <div class="hide user-list">
+                <div class="criaQuizz">
                     <p class="user-title">Seus Quizzes</p>
                     <button onclick="abreCriacaoQuizz()"><ion-icon name="add-circle"></ion-icon></button>
                 </div>
@@ -60,7 +60,7 @@
     </div>
 
     <div class="paginaCriacaoQuizz">
-        <div class="comecoCriaQuizz">
+        <div class="comecoCriaQuizz hide">
             <p>Comece pelo começo</p>
             <form>
                 <input id="tituloQuizz" type="text" placeholder="Título do seu quizz">
@@ -72,7 +72,7 @@
             <button onclick="informacoesBasicasQuizz()">Prosseguir para criar perguntas</button>
         </div> 
 
-        <div class="comecoCriaQuizz">
+        <div class="perguntasCriaQuizz comecoCriaQuizz hide">
             <p class="comecoCriaQuizz-title">Crie suas perguntas</p>
             <form>
                 <p class="comecoCriaQuizz-question">Pergunta 1</p>
@@ -101,7 +101,7 @@
         </div>
 
 
-        <div class="nivelCriaQuizz">
+        <div class="nivelCriaQuizz hide">
             <p>Agora, decida os níveis</p>
 
             <form>

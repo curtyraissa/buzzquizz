@@ -105,7 +105,7 @@ function autoQuizzScroll(){
 
 function abreCriacaoQuizz(){
   document.querySelector('.paginaInicial').classList.add('hide');
-  document.querySelector('.paginaCriacaoQuizz').classList.remove('hide');
+  document.querySelector('.comecoCriaQuizz').classList.remove('hide');
 }
 //Pega as informações básicas do quizz criado (1ª página)
 let tituloQuizz;
@@ -139,6 +139,7 @@ function informacoesBasicasQuizz(){
 
   if(tituloQuizz&&imagemQuizzURL&&numDePerguntas&&numDeNiveis){
     document.querySelector('.comecoCriaQuizz').classList.add('hide');
+    document.querySelector('.perguntasCriaQuizz').classList.remove('hide');
     document.getElementById('tituloQuizz').value = "";
     document.getElementById('imagemQuizz').value = "";
     document.getElementById('numPerguntasQuizz').value = "";

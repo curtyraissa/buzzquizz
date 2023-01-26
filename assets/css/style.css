@@ -91,6 +91,7 @@ main {
   border: 1px dashed var(--white);
 }
 
+.user-list.hide,
 .comecoCriaQuizz.hide,
 .nivelCriaQuizz.hide,
 .hide{
@@ -230,8 +231,10 @@ ion-icon {
   color: #000000;
   font-family: 'Roboto', sans-serif;
   font-style: normal;
-  margin: 0 auto;
-  margin-top: 71px;
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 27px;
+  margin-bottom: 27px;
 }
 
 .comecoCriaQuizz-title {
@@ -337,12 +340,14 @@ ion-icon {
 
 p.invisible.alert {
   color: #EC362D;
+  margin-top: 0;
   opacity: 1;
   transition: .5s;
 }
 
 p.invisible {
   opacity: 0;
+  margin-top: 0;
 }
 
 

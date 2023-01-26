@@ -137,10 +137,10 @@ function answerCheck() {
             <p>${storedValueLevel.text}</p>
           </div>
         </div>
-        <div class="quizz-restart">
+        <div>
           <p>Reiniciar Quizz</p>
         </div>
-        <div class"post-quizz-home-return>
+        <div>
           <p>Voltar para home</p>
         </div>
       `;

@@ -72,16 +72,21 @@ function selectOption(selection){
         div.classList.add("opacidade")
       }
     })
+    setTimeout(autoQuizzScroll, 2000)
   } else {
     return true;
   }
 }
 
-//lista.foreach((numero) =>{
-//  numero.otherHTML
-//  })
+function autoQuizzScroll(){
+    if (document.querySelector(".unanswered") == null){
+      return true;
+    } else {
+      document.querySelector(".unanswered").scrollIntoView();
+    }
+}
 
-//Ação do botão de criar quizz
+
 function abreCriacaoQuizz(){
   document.querySelector('.paginaInicial').classList.add('hide');
   document.querySelector('.paginaCriacaoQuizz').classList.remove('hide');

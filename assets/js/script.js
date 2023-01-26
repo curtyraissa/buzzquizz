@@ -140,11 +140,15 @@ function answerCheck() {
         <button>
           <p>Reiniciar Quizz</p>
         </button>
-        <button onclick="getQuizzes()">
+        <button onclick="returnHome()">
           <p>Voltar para home</p>
         </button>
       `;
   setTimeout(autoScrollQuizzResult, 2000)
+}
+function returnHome(){
+  getQuizzes()
+  document.querySelector("body").scrollIntoView();
 }
 function autoScrollQuizzResult(){
       document.querySelector(".resultado-quizz").scrollIntoView();

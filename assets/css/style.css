@@ -213,15 +213,12 @@ main {
   flex-direction: column;
   align-items: center;
   max-width: 564px;
-  height: 450px;
   margin: 0 auto;
   margin-top: 71px;
 }
 
-.comecoCriaQuizz p {
+.comecoCriaQuizz-title{
   color: var(--black);
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
   font-weight: 700;
   font-size: 23px;
   line-height: 27px;
@@ -230,7 +227,6 @@ main {
 
 .paginaCriacaoQuizz form {
   background-color: var(--white);
-  width: 600px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -253,7 +249,6 @@ main {
 
 .paginaCriacaoQuizz input::placeholder {
   color: var(--grey-400);
-  font-family: 'Roboto';
   font-style: italic;
   font-weight: 400;
   font-size: 19px;
@@ -263,8 +258,6 @@ main {
 .paginaCriacaoQuizz input[type=text],
 .paginaCriacaoQuizz input[type=url] {
   color: var(--black);
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
   font-weight: 400;
   font-size: 19px;
   line-height: 22px;
@@ -272,18 +265,16 @@ main {
 
 .paginaCriacaoQuizz button {
   background-color: var(--red);
+  color: var(--red-100);
+  text-align: center;
   min-height: 54px;
   border-radius: 15px;
-  text-align: center;
-  color: var(--red-100);
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
   font-weight: 400;
   font-size: 21px;
   line-height: 25px;
-  margin-top: 85px;
+  margin: 85px 0;
   padding: 0 35px;
-  border: none
+  border: none;
 }
 
 .paginaCriacaoQuizz button:hover {
@@ -291,6 +282,18 @@ main {
   background-color: var(--red-100);
   color: var(--red);
   border: 1px solid var(--red);
+}
+
+.comecoCriaQuizz-question{
+  font-weight: 700;
+  margin-bottom: 18px;
+  display: flex;
+  width: 100%;
+  font-size: 20px;
+  line-height: 23px;
+}
+.mt-18{
+  margin-top: 18px;
 }
 
 @media (max-width: 376px) {
@@ -331,7 +334,7 @@ main {
     margin-top: 37px;
   }
 
-  .comecoCriaQuizz p {
+  .comecoCriaQuizz-title {
     margin-bottom: 29px;
   }
 
@@ -344,7 +347,7 @@ main {
   }
 
   .paginaCriacaoQuizz button {
-    margin-top: 29px;
+    margin: 29px 0 61px;
     width: 323px;
     font-size: 18px;
   }

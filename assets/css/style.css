@@ -166,7 +166,7 @@ main {
   left: 17px;
 }
 
-.main-list{
+.main-list {
   display: flex;
   flex-direction: column;
 }
@@ -193,8 +193,8 @@ main {
 
 .allQuizzes-img {
   border-radius: 5px;
-  width:340px;
-  height:181px;
+  width: 340px;
+  height: 181px;
 }
 
 .allQuizzes-title {
@@ -207,11 +207,12 @@ main {
   bottom: 20px;
   left: 17px;
 }
+
 /*
 As duas classes abaixo estão presentes aqui no CSS e no Javascript somente para melhor visualização
 Se precisar, sinta-se livre para fazer o que quizer... apagar, mudar etc
 */
-.question-box{
+.question-box {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -224,15 +225,12 @@ Se precisar, sinta-se livre para fazer o que quizer... apagar, mudar etc
   flex-direction: column;
   align-items: center;
   max-width: 564px;
-  height: 450px;
   margin: 0 auto;
   margin-top: 71px;
 }
 
-.comecoCriaQuizz p {
+.comecoCriaQuizz-title {
   color: var(--black);
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
   font-weight: 700;
   font-size: 23px;
   line-height: 27px;
@@ -241,7 +239,6 @@ Se precisar, sinta-se livre para fazer o que quizer... apagar, mudar etc
 
 .paginaCriacaoQuizz form {
   background-color: var(--white);
-  width: 600px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -264,7 +261,6 @@ Se precisar, sinta-se livre para fazer o que quizer... apagar, mudar etc
 
 .paginaCriacaoQuizz input::placeholder {
   color: var(--grey-400);
-  font-family: 'Roboto';
   font-style: italic;
   font-weight: 400;
   font-size: 19px;
@@ -274,8 +270,6 @@ Se precisar, sinta-se livre para fazer o que quizer... apagar, mudar etc
 .paginaCriacaoQuizz input[type=text],
 .paginaCriacaoQuizz input[type=url] {
   color: var(--black);
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
   font-weight: 400;
   font-size: 19px;
   line-height: 22px;
@@ -283,18 +277,16 @@ Se precisar, sinta-se livre para fazer o que quizer... apagar, mudar etc
 
 .paginaCriacaoQuizz button {
   background-color: var(--red);
+  color: var(--red-100);
+  text-align: center;
   min-height: 54px;
   border-radius: 15px;
-  text-align: center;
-  color: var(--red-100);
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
   font-weight: 400;
   font-size: 21px;
   line-height: 25px;
-  margin-top: 85px;
+  margin: 85px 0;
   padding: 0 35px;
-  border: none
+  border: none;
 }
 
 .paginaCriacaoQuizz button:hover {
@@ -304,16 +296,31 @@ Se precisar, sinta-se livre para fazer o que quizer... apagar, mudar etc
   border: 1px solid var(--red);
 }
 
+.comecoCriaQuizz-question {
+  font-weight: 700;
+  margin-bottom: 18px;
+  display: flex;
+  width: 100%;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.mt-18 {
+  margin-top: 18px;
+}
+
 /*
 Classes pertinentes ao requisito "Comportamento das respostas"
 */
-.opacidade{
+.opacidade {
   opacity: 0.6;
 }
-.correto{
+
+.correto {
   color: green;
 }
-.incorreto{
+
+.incorreto {
   color: red;
 }
 
@@ -326,10 +333,11 @@ Classes pertinentes ao requisito "Comportamento das respostas"
     flex-direction: column;
   }
 
-  .userQuizzes{
+  .userQuizzes {
     margin-bottom: 38px;
   }
-  .main-title{
+
+  .main-title {
     margin: 0 18px 14px;
   }
 
@@ -351,15 +359,15 @@ Classes pertinentes ao requisito "Comportamento das respostas"
 
 
   /* tela criacao do quiz */
-  .comecoCriaQuizz{
+  .comecoCriaQuizz {
     margin-top: 37px;
   }
 
-  .comecoCriaQuizz p {
+  .comecoCriaQuizz-title {
     margin-bottom: 29px;
   }
 
-  .comecoCriaQuizz form{
+  .comecoCriaQuizz form {
     width: 375px;
   }
 
@@ -368,7 +376,7 @@ Classes pertinentes ao requisito "Comportamento das respostas"
   }
 
   .paginaCriacaoQuizz button {
-    margin-top: 29px;
+    margin: 29px 0 61px;
     width: 323px;
     font-size: 18px;
   }

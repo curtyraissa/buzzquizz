@@ -32,11 +32,11 @@ function renderChoosenQuizz(quizzInfo){
   //Aqui embaixo é inserido cada questão individual do Quizz
   for (let i=0; i<quizzInfo.data.questions.length;i++){
     quizzes.innerHTML+=`
-    <div class="question-box unchecked">
+    <div class="unanswered question-box">
       <div class="question-declaration">
         <p>${quizzInfo.data.questions[i].title}</p>
       </div>
-      <div class="unanswered options-of-question-${i}">
+      <div class="options-of-question-${i}">
       </div>
     </div>`
     quizzInfo.data.questions[i].answers.sort(shuffle);
@@ -65,9 +65,7 @@ function selectOption(selection){
   //console.log(currentQuizzData)
   if (!selection.parentNode.classList.contains("answered")){
     selection.classList.replace("unselected","selected")
-    selection.parentNode.classList.replace("unanswered","answered")
-
-
+    selection.parentNode.parentNode.classList.replace("unanswered","answered")
     const acinzentados = document.querySelectorAll("div.answered .unselected")
     //altera as divs irmãs da selecionada
     acinzentados.forEach(div => {
@@ -115,7 +113,7 @@ function selectionCounter(){
 function answerCheck() {
 	const correctAnswerCounter = document.querySelectorAll(".selected.true").length
 	const correctAnswerPercent = Math.round((correctAnswerCounter / currentQuizzData.data.questions.length) * 100)
-  
+
 	storedValue = currentQuizzData.data.levels[0].minValue;
   storedValueLevel = currentQuizzData.data.levels[0]
 
@@ -130,7 +128,7 @@ function answerCheck() {
 		}
   const quizzes = document.querySelector(".allQuizzes");
 	quizzes.innerHTML += `
-        <div>
+        <div class="resultado-quizz">
           <div>
             <p>${correctAnswerPercent}% de acerto: ${storedValueLevel.title}</p>
           </div>
@@ -140,8 +138,11 @@ function answerCheck() {
           </div>
         </div>
       `;
+  setTimeout(autoScrollQuizzResult, 2000)
 }
-
+function autoScrollQuizzResult(){
+      document.querySelector(".resultado-quizz").scrollIntoView();
+}
 function abreCriacaoQuizz(){
   document.querySelector('.paginaInicial').classList.add('hide');
   document.querySelector('.paginaCriacaoQuizz').classList.remove('hide');

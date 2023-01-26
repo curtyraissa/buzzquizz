@@ -2,6 +2,7 @@ let currentQuizzData, currentMinValue, storedValue, storedValueLevel = undefined
 function getQuizzes() {
   const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
   promise.then(renderAllQuizzes);
+  promise.then(multipleThenTest)
 };
 function renderAllQuizzes(quizzInfo) {
   const quizzes = document.querySelector(".allQuizzes");

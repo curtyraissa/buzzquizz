@@ -59,8 +59,8 @@
         <footer></footer>
     </div>
 
-    <div class="paginaCriacaoQuizz hide">
-        <div class="comecoCriaQuizz">
+    <div class="paginaCriacaoQuizz">
+        <!-- <div class="comecoCriaQuizz">
             <p>Comece pelo começo</p>
             <form>
                 <input id="tituloQuizz" type="text" placeholder="Título do seu quizz">
@@ -69,6 +69,34 @@
                 <input id="numNiveisQuizz" type="text" placeholder="Quantidade de níveis do quizz">
             </form>
             <button onclick="informacoesBasicasQuizz()">Prosseguir para criar perguntas</button>
+        </div> -->
+
+        <div class="comecoCriaQuizz">
+            <p class="comecoCriaQuizz-title">Crie suas perguntas</p>
+            <form>
+                <p class="comecoCriaQuizz-question">Pergunta 1</p>
+                <input id="textoPerguntaQuizz" type="text" placeholder="Texto da pergunta">
+                <input id="corFundoQuizz" type="url" placeholder="Cor do fundo da pergunta">
+                <p class="comecoCriaQuizz-question mt-18">Resposta correta</p>
+                <input id="respostaCorretaQuizz" type="text" placeholder="Resposta correta">
+                <input id="UrlImagemQuizz" type="text" placeholder="URL da imagem">
+                <p class="comecoCriaQuizz-question mt-18">Resposta incorretas</p>
+                <input id="RespIncorreta1Quizz" type="text" placeholder="Resposta correta 1">
+                <input id="UrlImagem1Quizz" type="text" placeholder="URL da imagem 1">
+                <input class="mt-18" id="RespIncorreta2Quizz" type="text" placeholder="Resposta correta 2">
+                <input id="UrlImagem2Quizz" type="text" placeholder="URL da imagem 2">
+                <input class="mt-18" id="RespIncorreta3Quizz" type="text" placeholder="Resposta correta 3">
+                <input id="UrlImagem3Quizz" type="text" placeholder="URL da imagem 3">
+            </form>
+            <div class="container mt-18">
+                <p class="comecoCriaQuizz-question">Pergunta 2</p>
+                <ion-icon name="create-outline"></ion-icon>
+            </div>
+            <div class="container mt-18">
+                <p class="comecoCriaQuizz-question">Pergunta 3</p>
+                <ion-icon name="create-outline"></ion-icon>
+            </div>
+            <button onclick="criarPerguntasQuizz()">Prosseguir pra criar níveis</button>
         </div>
     </div>
 </body>

@@ -140,7 +140,7 @@ function answerCheck() {
         <button>
           <p>Reiniciar Quizz</p>
         </button>
-        <button>
+        <button onclick="getQuizzes()">
           <p>Voltar para home</p>
         </button>
       `;

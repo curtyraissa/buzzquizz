@@ -55,9 +55,32 @@
     </div>
 
     <div class="paginaCriacaoQuizz">
-        <div class="comecoCriaQuizz">
+        <div class="comecoCriaQuizz hide">
             <p>Comece pelo começo</p>
             <form>
+                <input id="tituloQuizz" type="text" placeholder="Título do seu quizz">
+                <input id="imagemQuizz" type="url" placeholder="URL da imagem do seu quizz">
+                <input id="numPerguntasQuizz" type="text" placeholder="Quantidade de perguntas do quizz">
+                <input id="numNiveisQuizz" type="text" placeholder="Quantidade de níveis do quizz">
+            </form>
+            <p class="invisible">Os dados inseridos não são válidos!</p>
+            <button onclick="informacoesBasicasQuizz()">Prosseguir para criar perguntas</button>
+        </div>
+
+
+        <div class="nivelCriaQuizz">
+            <p>Agora, decida os níveis</p>
+
+            <form>
+                <p>Nível 1</p>
+                <input id="tituloQuizz" type="text" placeholder="Título do seu quizz">
+                <input id="imagemQuizz" type="url" placeholder="URL da imagem do seu quizz">
+                <input id="numPerguntasQuizz" type="text" placeholder="Quantidade de perguntas do quizz">
+                <input id="numNiveisQuizz" type="text" placeholder="Quantidade de níveis do quizz">
+            </form>
+
+            <form>
+                <p>Nível 2</p>
                 <input id="tituloQuizz" type="text" placeholder="Título do seu quizz">
                 <input id="imagemQuizz" type="url" placeholder="URL da imagem do seu quizz">
                 <input id="numPerguntasQuizz" type="text" placeholder="Quantidade de perguntas do quizz">

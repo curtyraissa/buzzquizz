@@ -366,7 +366,9 @@ p.invisible.alert {
   transition: .5s;
 }
 
-
+.unanswered,.resultado-quizz{
+  scroll-margin-top:69px;
+}
 
 /*
 Classes pertinentes ao requisito "Comportamento das respostas"

@@ -208,6 +208,14 @@ ion-icon {
   bottom: 20px;
   left: 17px;
 }
+/*Essa aqui é a classe que eu criei pra tentar arrumar o gradiente*/
+.allQuizzes-card{
+    width: 340px;
+    height: 181px;
+    border-radius: 5px;
+    background-position:  center;
+    background-size: 340px 181px;
+}
 
 /*CSS da criação dos quizzes*/
 .nivelCriaQuizz,

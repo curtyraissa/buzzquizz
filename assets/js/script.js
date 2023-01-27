@@ -4,6 +4,7 @@ let treatedUserId =[]
 function getQuizzes() {
   const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
   promise.then(renderAllQuizzes);
+  promise.then(renderUserQuizzes);
 };
 function renderAllQuizzes(quizzInfo) {
   const quizzes = document.querySelector(".allQuizzes");
@@ -325,12 +326,12 @@ function getlocalStorage(){
 
 function criarQuizz(){
     //A operação abaixo existe somente para testes através do envio direto do Quizz para a API
-    
+    /*
     const promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes",
       {title:"T\xedtulo do quizz",image:"https://http.cat/411.jpg",questions:[{title:"T\xedtulo da pergunta 1",color:"#123456",answers:[{text:"Texto da resposta 1",image:"https://http.cat/411.jpg",isCorrectAnswer:!0},{text:"Texto da resposta 2",image:"https://http.cat/412.jpg",isCorrectAnswer:!1}]},{title:"T\xedtulo da pergunta 2",color:"#123456",answers:[{text:"Texto da resposta 1",image:"https://http.cat/411.jpg",isCorrectAnswer:!0},{text:"Texto da resposta 2",image:"https://http.cat/412.jpg",isCorrectAnswer:!1}]},{title:"T\xedtulo da pergunta 3",color:"#123456",answers:[{text:"Texto da resposta 1",image:"https://http.cat/411.jpg",isCorrectAnswer:!0},{text:"Texto da resposta 2",image:"https://http.cat/412.jpg",isCorrectAnswer:!1}]}],levels:[{title:"T\xedtulo do n\xedvel 1",image:"https://http.cat/411.jpg",text:"Descri\xe7\xe3o do n\xedvel 1",minValue:0},{title:"T\xedtulo do n\xedvel 2",image:"https://http.cat/412.jpg",text:"Descri\xe7\xe3o do n\xedvel 2",minValue:50}]
     })
-    
     promise.then(criarQuizzPostProcessing)
+    */
 }
 function criarQuizzPostProcessing(variable){
   const currentID=variable.data.id
@@ -341,6 +342,27 @@ function criarQuizzPostProcessing(variable){
   treatedUserId = JSON.parse("[" + userId + "]")
 }
 
+function renderUserQuizzes(quizzInfo){
+  if (treatedUserId.length>0){
+    document.querySelector(".hide.user-list").classList.remove("hide");
+    document.querySelector(".main-create").classList.add("hide");
+    const quizzes = document.querySelector(".userQuizzes");
+    quizzes.innerHTML = "";
+    for (let i = 0; i < quizzInfo.data.length; i++) {
+        for (let j=0; j<treatedUserId.length;j++){
+          if (treatedUserId[j]==quizzInfo.data[i].id){
+          quizzes.innerHTML += `
+          <li id="${quizzInfo.data[i].id}" onclick="getChoosenQuizzData(this)">
+            <img class="userQuizzes-img" src=${quizzInfo.data[i].image} alt="img do quizz">
+           <p class="userQuizzes-title">${quizzInfo.data[i].title}</p>
+          </li>
+          `;
+          }
+        }
+    }
+
+  }
+}
 
 getlocalStorage(); //ESSA FUNÇÃO TEM DE SER SEMPRE A PRIMEIRA A SER EXECUTADA!
 getQuizzes();

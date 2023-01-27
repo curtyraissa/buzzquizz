@@ -34,6 +34,11 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .header-title {
@@ -43,6 +48,7 @@ header {
 }
 
 .paginaInicial {
+  margin-top: 69px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -148,7 +154,8 @@ ion-icon {
   position: relative;
 }
 
-.userQuizzes-img {
+.userQuizzes-img, 
+.pageSucessoQuizz-img {
   background-color: var(--pink);
   width: 340px;
   height: 181px;
@@ -207,20 +214,29 @@ ion-icon {
   bottom: 20px;
   left: 17px;
 }
+/*Essa aqui é a classe que eu criei pra tentar arrumar o gradiente*/
+.allQuizzes-card{
+    width: 340px;
+    height: 181px;
+    border-radius: 5px;
+    background-position:  center;
+    background-size: 340px 181px;
+}
 
 /*CSS da criação dos quizzes*/
 .nivelCriaQuizz,
-.comecoCriaQuizz{
+.pageSucessoQuizz,
+.comecoCriaQuizz {
   display: flex;
   flex-direction: column;
   align-items: center;
   max-width: 600px;
-  margin:0 auto ;
+  margin: 0 auto;
   margin-top: 71px;
 }
 
 .nivelCriaQuizz p,
-.comecoCriaQuizz p{
+.comecoCriaQuizz p {
   color: var(--black);
   font-family: 'Roboto', sans-serif;
   font-style: normal;
@@ -229,11 +245,12 @@ ion-icon {
   line-height: 27px;
 }
 
-.mb-27{
+.mb-27 {
   margin-bottom: 43px;
 }
 
-.comecoCriaQuizz-title {
+.comecoCriaQuizz-title,
+.pageSucessoQuizz-title {
   color: var(--black);
   font-weight: 700;
   font-size: 23px;
@@ -241,7 +258,7 @@ ion-icon {
   margin-bottom: 48px;
 }
 
-.box-form{
+.box-form {
   background-color: var(--white);
   width: 600px;
   box-sizing: border-box;
@@ -254,7 +271,7 @@ ion-icon {
   margin-bottom: 24px;
 }
 
-.paginaCriacaoQuizz ion-icon:hover{
+.paginaCriacaoQuizz ion-icon:hover {
   cursor: pointer;
   opacity: .6;
 }
@@ -333,7 +350,7 @@ ion-icon {
   margin-top: 18px;
 }
 
-.pt-00{
+.pt-00 {
   padding-top: 0;
 }
 
@@ -367,8 +384,35 @@ Classes pertinentes ao requisito "Comportamento das respostas"
 }
 
 
-.hide{
+.hide {
   display: none;
+}
+
+.pageSucessoQuizz-botao{
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 24px;
+}
+
+.pageSucessoQuizz-botao button{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.botaoVoltar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--grey-500);
+  height: 44px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 35px;
+}
+
+.botaoVoltar:hover{
+  color: var(--red);
 }
 
 @media (max-width: 376px) {

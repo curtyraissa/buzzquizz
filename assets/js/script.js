@@ -1,26 +1,39 @@
 let currentQuizzData, currentMinValue, storedValue, storedValueLevel = undefined;
+let userId =[]
+let treatedUserId =[]
 function getQuizzes() {
   const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
   promise.then(renderAllQuizzes);
+  promise.then(renderUserQuizzes);
 };
 function renderAllQuizzes(quizzInfo) {
+  if (quizzInfo.data.length>0){
   const quizzes = document.querySelector(".allQuizzes");
   quizzes.innerHTML = "";
   for (let i = 0; i < quizzInfo.data.length; i++) {
     quizzes.innerHTML += `
-    <li id="${quizzInfo.data[i].id}" onclick="getChoosenQuizzData(this)">
-      <img class="allQuizzes-img" src=${quizzInfo.data[i].image} alt="img do quizz">
+
+    <li id="${quizzInfo.data[i].id}" onclick="getChoosenQuizzData(this)" class="allQuizzes-card" style="background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(${quizzInfo.data[i].image});">
       <p class="allQuizzes-title">${quizzInfo.data[i].title}</p>
     </li>
-        `;
+        `
+        ;
+//        <img class="allQuizzes-img" src=${quizzInfo.data[i].image} alt="img do quizz">
     }
+  }
   };
 function getChoosenQuizzData(selection){
     const selectionID= selection.getAttribute("id");
-    axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
-    .then(renderChoosenQuizz);
+    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
+    promise.then(renderChoosenQuizz);
 };
+function unrenderUserQuizzes(){
+  document.querySelector(".user-list").classList.add("hide");
+}
 function renderChoosenQuizz(quizzInfo){
+  document.querySelector("body").scrollIntoView();
+  unrenderUserQuizzes()
+  document.querySelector(".main-title").classList.add("hide")
   const quizzes = document.querySelector(".allQuizzes");
   //Aqui embaixo é inserido o banner que fica no topo do Quizz a imagem e o título do quizz.
   quizzes.innerHTML=`
@@ -31,9 +44,13 @@ function renderChoosenQuizz(quizzInfo){
   `
   //Aqui embaixo é inserido cada questão individual do Quizz
   for (let i=0; i<quizzInfo.data.questions.length;i++){
+    /*
+    Na função abaixo deve ser incluso a cor de cada pergunta individual!
+               
+    */
     quizzes.innerHTML+=`
     <div class="unanswered question-box">
-      <div class="question-declaration">
+      <div class="question-declaration" style="background-color:${quizzInfo.data.questions[i].color}">
         <p>${quizzInfo.data.questions[i].title}</p>
       </div>
       <div class="options-of-question-${i}">
@@ -55,7 +72,6 @@ function renderChoosenQuizz(quizzInfo){
     }
   }
   currentQuizzData=quizzInfo;
-  document.querySelector(".main-list").scrollIntoView();
 }
 function shuffle() {
   return Math.random() - 0.5;
@@ -149,10 +165,11 @@ function answerCheck() {
 }
 function restartQuizz(){
     const selectionID= currentQuizzData.data.id
-    axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
-    .then(renderChoosenQuizz);
-};
+    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
+    promise.then(renderChoosenQuizz);
+  };
 function returnHome(){
+  createMain()
   getQuizzes()
   document.querySelector("body").scrollIntoView();
 }
@@ -309,4 +326,78 @@ function informacoesNivelQuizz(){
   elemento4.forEach((valor)=> {valor.value = "";});
 }
 
+function getlocalStorage(){
+  const stringuserId = localStorage.getItem("id")
+  if (stringuserId !== null){
+    userId.push(stringuserId)
+    treatedUserId = JSON.parse("[" + userId + "]")
+  }
+}
+
+function criarQuizz(){
+    //A operação abaixo existe somente para testes através do envio direto do Quizz para a API
+    /*
+    
+    const promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes",
+      {title:"T\xedtulo do quizz",image:"https://http.cat/411.jpg",questions:[{title:"T\xedtulo da pergunta 1",color:"#123456",answers:[{text:"Texto da resposta 1",image:"https://http.cat/411.jpg",isCorrectAnswer:!0},{text:"Texto da resposta 2",image:"https://http.cat/412.jpg",isCorrectAnswer:!1}]},{title:"T\xedtulo da pergunta 2",color:"#123456",answers:[{text:"Texto da resposta 1",image:"https://http.cat/411.jpg",isCorrectAnswer:!0},{text:"Texto da resposta 2",image:"https://http.cat/412.jpg",isCorrectAnswer:!1}]},{title:"T\xedtulo da pergunta 3",color:"#123456",answers:[{text:"Texto da resposta 1",image:"https://http.cat/411.jpg",isCorrectAnswer:!0},{text:"Texto da resposta 2",image:"https://http.cat/412.jpg",isCorrectAnswer:!1}]}],levels:[{title:"T\xedtulo do n\xedvel 1",image:"https://http.cat/411.jpg",text:"Descri\xe7\xe3o do n\xedvel 1",minValue:0},{title:"T\xedtulo do n\xedvel 2",image:"https://http.cat/412.jpg",text:"Descri\xe7\xe3o do n\xedvel 2",minValue:50}]
+    })
+
+    promise.then(criarQuizzPostProcessing)
+    */
+}
+function criarQuizzPostProcessing(variable){
+  const currentID=variable.data.id
+  console.log(currentID)
+  userId.push(currentID)
+  console.log(userId)
+  localStorage.setItem("id",userId)
+  treatedUserId = JSON.parse("[" + userId + "]")
+}
+
+function renderUserQuizzes(quizzInfo){
+  if (treatedUserId.length>0){
+    document.querySelector(".hide.user-list").classList.remove("hide");
+    document.querySelector(".main-create").classList.add("hide");
+    const quizzes = document.querySelector(".userQuizzes");
+    quizzes.innerHTML = "";
+    for (let i = 0; i < quizzInfo.data.length; i++) {
+        for (let j=0; j<treatedUserId.length;j++){
+          if (treatedUserId[j]==quizzInfo.data[i].id){
+          quizzes.innerHTML += `
+          <li id="${quizzInfo.data[i].id}" onclick="getChoosenQuizzData(this)">
+            <img class="userQuizzes-img" src=${quizzInfo.data[i].image} alt="img do quizz">
+           <p class="userQuizzes-title">${quizzInfo.data[i].title}</p>
+          </li>
+          `;
+          }
+        }
+    }
+
+  }
+}
+function createMain(){
+  const mainContent = document.querySelector("main")
+  mainContent.innerHTML=`
+  <div class="main-create">
+  <p>Você não criou nenhum quizz ainda :(</p>
+  <button onclick="abreCriacaoQuizz()">Criar Quizz</button>
+</div>
+
+<div class="hide user-list">
+  <div class="criaQuizz">
+      <p class="user-title">Seus Quizzes</p>
+      <button onclick="abreCriacaoQuizz()"><ion-icon name="add-circle"></ion-icon></button>
+  </div>
+  <ul class="userQuizzes">
+  </ul>
+</div>
+
+<div class="main-list">
+  <p class="main-title">Todos os Quizzes</p>
+  <ul class="allQuizzes"></ul>
+</div>
+`
+}
+getlocalStorage(); //ESSA FUNÇÃO TEM DE SER SEMPRE A PRIMEIRA A SER EXECUTADA!
+createMain()
 getQuizzes();

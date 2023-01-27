@@ -265,6 +265,17 @@ ion-icon {
   flex-direction: column;
   align-items: center;
   scroll-margin-top: 69px;
+  justify-content: center;
+}
+.banner-quizz p{
+  font-weight: 400;
+  font-size: 39px;
+  line-height: 46px;
+  font-family: 'Roboto', sans-serif;
+  color: #FFFFFF;
+  text-align: center;
+  align-items: center;
+  color: #FFFFFF
 }
 /*CSS da criação dos quizzes*/
 .nivelCriaQuizz,

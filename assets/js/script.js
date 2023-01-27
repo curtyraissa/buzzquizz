@@ -31,6 +31,7 @@ function unrenderUserQuizzes(){
   document.querySelector(".user-list").classList.add("hide");
 }
 function renderChoosenQuizz(quizzInfo){
+  document.querySelector("body").scrollIntoView();
   unrenderUserQuizzes()
   document.querySelector(".main-title").classList.add("hide")
   const quizzes = document.querySelector(".allQuizzes");
@@ -71,7 +72,6 @@ function renderChoosenQuizz(quizzInfo){
     }
   }
   currentQuizzData=quizzInfo;
-  document.querySelector("body").scrollIntoView();
 }
 function shuffle() {
   return Math.random() - 0.5;

@@ -22,8 +22,8 @@ function renderAllQuizzes(quizzInfo) {
   };
 function getChoosenQuizzData(selection){
     const selectionID= selection.getAttribute("id");
-    axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
-    .then(renderChoosenQuizz);
+    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
+    promise.then(renderChoosenQuizz);
 };
 function unrenderUserQuizzes(){
   document.querySelector(".user-list").classList.add("hide");
@@ -68,7 +68,7 @@ function renderChoosenQuizz(quizzInfo){
     }
   }
   currentQuizzData=quizzInfo;
-  document.querySelector(".main-list").scrollIntoView();
+  document.querySelector("body").scrollIntoView();
 }
 function shuffle() {
   return Math.random() - 0.5;

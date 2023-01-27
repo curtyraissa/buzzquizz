@@ -1,8 +1,10 @@
 let currentQuizzData, currentMinValue, storedValue, storedValueLevel = undefined;
 let userId =[]
 let treatedUserId =[]
+let purgedUserId = []
 function getQuizzes() {
   const promise = axios.get("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes");
+  promise.then(purgeUserId);
   promise.then(renderAllQuizzes);
   promise.then(renderUserQuizzes);
 };
@@ -355,14 +357,14 @@ function criarQuizzPostProcessing(variable){
 }
 
 function renderUserQuizzes(quizzInfo){
-  if (treatedUserId.length>0){
+  if (purgedUserId.length>0){
     document.querySelector(".hide.user-list").classList.remove("hide");
     document.querySelector(".main-create").classList.add("hide");
     const quizzes = document.querySelector(".userQuizzes");
     quizzes.innerHTML = "";
     for (let i = 0; i < quizzInfo.data.length; i++) {
-        for (let j=0; j<treatedUserId.length;j++){
-          if (treatedUserId[j]==quizzInfo.data[i].id){
+        for (let j=0; j<purgedUserId.length;j++){
+          if (purgedUserId[j]==quizzInfo.data[i].id){
           quizzes.innerHTML += `
           <li id="${quizzInfo.data[i].id}" onclick="getChoosenQuizzData(this)">
             <img class="userQuizzes-img" src=${quizzInfo.data[i].image} alt="img do quizz">
@@ -374,6 +376,16 @@ function renderUserQuizzes(quizzInfo){
     }
 
   }
+}
+function purgeUserId(quizz){
+  if (treatedUserId.length>0){
+    for (let k = 0; k < quizz.data.length; k++){
+      for (let w=0; w< treatedUserId.length; w++){
+        if (treatedUserId[w]===quizz.data[k].id){
+          purgedUserId.push(treatedUserId[w]);
+        }
+    }
+  }}
 }
 function createMain(){
   const mainContent = document.querySelector("main")

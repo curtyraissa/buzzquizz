@@ -256,6 +256,18 @@ ion-icon {
     background-size: 340px 181px;
 }
 
+.banner-quizz{
+  height: 227px;
+  width: 100%;
+  left: 0px;
+  top: 69px;
+  background-position:  center;
+  background-size: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  scroll-margin-top: 69px;
+}
 /*CSS da criação dos quizzes*/
 .nivelCriaQuizz,
 .pageSucessoQuizz,

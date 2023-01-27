@@ -33,7 +33,6 @@ function unrenderUserQuizzes(){
   document.querySelector(".user-list").classList.add("hide");
 }
 function renderChoosenQuizz(quizzInfo){
-  document.querySelector("body").scrollIntoView();
   unrenderUserQuizzes()
   document.querySelector(".main-title").classList.add("hide");
   document.querySelector(".main-create").classList.add("hide");
@@ -41,11 +40,11 @@ function renderChoosenQuizz(quizzInfo){
   const quizzes = document.querySelector(".allQuizzes");
   //Aqui embaixo é inserido o banner que fica no topo do Quizz a imagem e o título do quizz.
   quizzes.innerHTML=`
-  <div id="${quizzInfo.data.id}">
-        <img src="${quizzInfo.data.image}">
+  <div id="${quizzInfo.data.id}" class="banner-quizz" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57)), url(${quizzInfo.data.image})">
         <p>${quizzInfo.data.title}</p>
   </div>
   `
+  document.querySelector(".banner-quizz").scrollIntoView();
   //Aqui embaixo é inserido cada questão individual do Quizz
   for (let i=0; i<quizzInfo.data.questions.length;i++){
     /*

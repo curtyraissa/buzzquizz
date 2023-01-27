@@ -383,11 +383,6 @@ Classes pertinentes ao requisito "Comportamento das respostas"
   color: red;
 }
 
-
-.hide {
-  display: none;
-}
-
 .pageSucessoQuizz-botao{
   display: flex;
   flex-direction: column;
@@ -414,6 +409,11 @@ Classes pertinentes ao requisito "Comportamento das respostas"
 .botaoVoltar:hover{
   color: var(--red);
 }
+
+.hide {
+  display: none;
+}
+
 
 @media (max-width: 376px) {
   main {

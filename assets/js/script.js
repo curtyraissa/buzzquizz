@@ -32,6 +32,7 @@ function unrenderUserQuizzes(){
 }
 function renderChoosenQuizz(quizzInfo){
   unrenderUserQuizzes()
+  document.querySelector(".main-title").classList.add("hide")
   const quizzes = document.querySelector(".allQuizzes");
   //Aqui embaixo é inserido o banner que fica no topo do Quizz a imagem e o título do quizz.
   quizzes.innerHTML=`

@@ -34,6 +34,11 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
 
 .header-title {
@@ -43,6 +48,7 @@ header {
 }
 
 .paginaInicial {
+  margin-top: 69px;
   display: flex;
   flex-direction: column;
   align-items: center;

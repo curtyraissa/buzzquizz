@@ -317,22 +317,26 @@ function informacoesNivelQuizz(){
 
 function getlocalStorage(){
   const stringuserId = localStorage.getItem("id")
-  userId.push(stringuserId)
-  treatedUserId = JSON.parse("[" + userId + "]")
+  if (stringuserId !== null){
+    userId.push(stringuserId)
+    treatedUserId = JSON.parse("[" + userId + "]")
+  }
 }
 
 function criarQuizz(){
     //A operação abaixo existe somente para testes através do envio direto do Quizz para a API
-    /*
+    
     const promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes",
       {title:"T\xedtulo do quizz",image:"https://http.cat/411.jpg",questions:[{title:"T\xedtulo da pergunta 1",color:"#123456",answers:[{text:"Texto da resposta 1",image:"https://http.cat/411.jpg",isCorrectAnswer:!0},{text:"Texto da resposta 2",image:"https://http.cat/412.jpg",isCorrectAnswer:!1}]},{title:"T\xedtulo da pergunta 2",color:"#123456",answers:[{text:"Texto da resposta 1",image:"https://http.cat/411.jpg",isCorrectAnswer:!0},{text:"Texto da resposta 2",image:"https://http.cat/412.jpg",isCorrectAnswer:!1}]},{title:"T\xedtulo da pergunta 3",color:"#123456",answers:[{text:"Texto da resposta 1",image:"https://http.cat/411.jpg",isCorrectAnswer:!0},{text:"Texto da resposta 2",image:"https://http.cat/412.jpg",isCorrectAnswer:!1}]}],levels:[{title:"T\xedtulo do n\xedvel 1",image:"https://http.cat/411.jpg",text:"Descri\xe7\xe3o do n\xedvel 1",minValue:0},{title:"T\xedtulo do n\xedvel 2",image:"https://http.cat/412.jpg",text:"Descri\xe7\xe3o do n\xedvel 2",minValue:50}]
     })
-    */
+    
     promise.then(criarQuizzPostProcessing)
 }
 function criarQuizzPostProcessing(variable){
   const currentID=variable.data.id
+  console.log(currentID)
   userId.push(currentID)
+  console.log(userId)
   localStorage.setItem("id",userId)
   treatedUserId = JSON.parse("[" + userId + "]")
 }

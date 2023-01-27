@@ -25,7 +25,11 @@ function getChoosenQuizzData(selection){
     axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
     .then(renderChoosenQuizz);
 };
+function unrenderUserQuizzes(){
+  document.querySelector(".user-list").classList.add("hide");
+}
 function renderChoosenQuizz(quizzInfo){
+  unrenderUserQuizzes()
   const quizzes = document.querySelector(".allQuizzes");
   //Aqui embaixo é inserido o banner que fica no topo do Quizz a imagem e o título do quizz.
   quizzes.innerHTML=`
@@ -158,10 +162,11 @@ function answerCheck() {
 }
 function restartQuizz(){
     const selectionID= currentQuizzData.data.id
-    axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
-    .then(renderChoosenQuizz);
-};
+    const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
+    promise.then(renderChoosenQuizz);
+  };
 function returnHome(){
+  createMain()
   getQuizzes()
   document.querySelector("body").scrollIntoView();
 }
@@ -367,6 +372,29 @@ function renderUserQuizzes(quizzInfo){
 
   }
 }
+function createMain(){
+  const mainContent = document.querySelector("main")
+  mainContent.innerHTML=`
+  <div class="main-create">
+  <p>Você não criou nenhum quizz ainda :(</p>
+  <button onclick="abreCriacaoQuizz()">Criar Quizz</button>
+</div>
 
+<div class="hide user-list">
+  <div class="criaQuizz">
+      <p class="user-title">Seus Quizzes</p>
+      <button onclick="abreCriacaoQuizz()"><ion-icon name="add-circle"></ion-icon></button>
+  </div>
+  <ul class="userQuizzes">
+  </ul>
+</div>
+
+<div class="main-list">
+  <p class="main-title">Todos os Quizzes</p>
+  <ul class="allQuizzes"></ul>
+</div>
+`
+}
 getlocalStorage(); //ESSA FUNÇÃO TEM DE SER SEMPRE A PRIMEIRA A SER EXECUTADA!
+createMain()
 getQuizzes();

@@ -35,7 +35,9 @@ function unrenderUserQuizzes(){
 function renderChoosenQuizz(quizzInfo){
   document.querySelector("body").scrollIntoView();
   unrenderUserQuizzes()
-  document.querySelector(".main-title").classList.add("hide")
+  document.querySelector(".main-title").classList.add("hide");
+  document.querySelector(".main-create").classList.add("hide");
+  document.querySelector(".user-list").classList.add("hide");
   const quizzes = document.querySelector(".allQuizzes");
   //Aqui embaixo é inserido o banner que fica no topo do Quizz a imagem e o título do quizz.
   quizzes.innerHTML=`
@@ -174,6 +176,9 @@ function returnHome(){
   createMain()
   getQuizzes()
   document.querySelector("body").scrollIntoView();
+  document.querySelector('.pageSucessoQuizz').classList.add('hide');
+  document.querySelector('.paginaInicial').classList.remove('hide')
+
 }
 function autoScrollQuizzResult(){
       document.querySelector(".resultado-quizz").scrollIntoView();
@@ -267,7 +272,7 @@ function criaPaginaDosNiveis(){
   }
   boxForm.innerHTML+=`
   <p class="invisible">Os dados inseridos não são válidos!</p>
-  <button onclick="informacoesNivelQuizz()">Prosseguir para criar perguntas</button>`
+  <button onclick="informacoesNivelQuizz()">Finalizar Quizz</button>`
 }
 
 function informacoesNivelQuizz(){
@@ -326,6 +331,17 @@ function informacoesNivelQuizz(){
   elemento2.forEach((valor)=> {valor.value = "";});
   elemento3.forEach((valor)=> {valor.value = "";});
   elemento4.forEach((valor)=> {valor.value = "";});
+  document.querySelector('.nivelCriaQuizz').classList.add('hide');
+  document.querySelector('.pageSucessoQuizz').classList.remove('hide');
+  criaPaginaFinalização();
+}
+
+function criaPaginaFinalização(){
+  document.querySelector('.pageSucessoQuizz-img').innerHTML = `
+  <img src="${imagemQuizzURL}" alt="Imagem do seu quizz">
+  <p>${tituloQuizz}</p>
+  <div></div>
+  `;
 }
 
 function getlocalStorage(){

@@ -259,10 +259,8 @@ ion-icon {
 .banner-quizz{
   height: 227px;
   width: 100%;
-  left: 0px;
-  top: 69px;
   background-position:  center;
-  background-size: auto;
+  background-size: 100% auto;
   display: flex;
   flex-direction: column;
   align-items: center;

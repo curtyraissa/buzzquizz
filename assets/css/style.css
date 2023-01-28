@@ -5,8 +5,9 @@
   --white: #FFFFFF;
   --black: #000000;
   --pink: #ffc0cb;
-
+  --gren: #008000;
   --red: #EC362D;
+  --blue: #434CA0;
   --red-100: #fff5f4;
 
   --box-shadow: #00000040;
@@ -194,8 +195,6 @@ ion-icon:hover {
 
 .pageSucessoQuizz-img p {
   color: var(--white);
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
   font-weight: 400;
   font-size: 23px;
   line-height: 27px;
@@ -285,8 +284,7 @@ ion-icon:hover {
   font-weight: 400;
   font-size: 39px;
   line-height: 46px;
-  font-family: 'Roboto', sans-serif;
-  color: #FFFFFF;
+  color: var(--white);
   text-align: center;
   align-items: center;
 }
@@ -297,11 +295,12 @@ ion-icon:hover {
   flex-direction: column;
   justify-content: center;
   padding: 27.91px 34.41px 35.66px 36.43px;
-  background: #FFFFFF;
+  background: var(--white);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 
 .question-declaration {
+  background-color: var(--blue);
   width: 688.16px;
   height: 137px;
   display: flex;
@@ -322,6 +321,9 @@ ion-icon:hover {
 
 .alternatives-box p {
   width: 329px;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--black);
 }
 
 .unselected-img {
@@ -336,28 +338,22 @@ ion-icon:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #FFFFFF;
+  color: var(--white);
 }
-
-/*
-
-*/
 
 .restart-quizz {
   width: 260.38px;
   height: 52px;
   border-radius: 15px;
   border: none;
-  background-color: #EC362D;
+  background-color: var(--red);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 400;
   font-size: 21px;
   line-height: 25px;
-  color: #FFF5F4;
+  color: var(--red-100);
 }
 
 .restart-quizz:hover {
@@ -370,15 +366,13 @@ ion-icon:hover {
 .return-home {
   width: 219.64px;
   height: 44px;
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 400;
   font-size: 21px;
   line-height: 25px;
   display: flex;
   align-items: center;
   text-align: center;
-  color: #818181;
+  color: var(--grey-500);
   outline: none;
   border: none;
   background-color: transparent;
@@ -529,24 +523,21 @@ p.invisible.alert {
 .resultado-quizz {
   scroll-margin-top: 69px;
   width: 759px;
-  /* height: 676px; */
-  background: #FFFFFF;
+  background: var(--white);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 
-/*
-Classes pertinentes ao requisito "Comportamento das respostas"
-*/
+/* Classes pertinentes ao requisito "Comportamento das respostas" */
 .opacidade {
   opacity: 0.6;
 }
 
 .correto {
-  color: green;
+  color: var(--gren);
 }
 
 .incorreto {
-  color: red;
+  color: var(--red);
 }
 
 .pageSucessoQuizz-botao {
@@ -614,7 +605,6 @@ Classes pertinentes ao requisito "Comportamento das respostas"
     margin: 38px 0 16px 0;
   }
 
-
   /* tela criacao do quiz */
   .comecoCriaQuizz {
     margin-top: 37px;
@@ -637,6 +627,4 @@ Classes pertinentes ao requisito "Comportamento das respostas"
     width: 323px;
     font-size: 18px;
   }
-
-
 }

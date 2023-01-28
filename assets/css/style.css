@@ -235,6 +235,7 @@ ion-icon:hover {
   align-items: center;
   gap: 15px;
   flex-wrap: wrap;
+  width: 1051px;
 }
 
 .allQuizzes li {

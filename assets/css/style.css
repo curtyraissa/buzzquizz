@@ -235,7 +235,14 @@ ion-icon:hover {
   align-items: center;
   gap: 15px;
   flex-wrap: wrap;
+}
+
+.main-page-width{
   width: 1051px;
+}
+
+.quizz-page-width{
+  width: 100%;
 }
 
 .allQuizzes li {

@@ -38,6 +38,7 @@ function renderChoosenQuizz(quizzInfo){
   document.querySelector(".main-title").classList.add("hide");
   document.querySelector(".main-create").classList.add("hide");
   document.querySelector(".user-list").classList.add("hide");
+  document.querySelector(".allQuizzes.main-page-width").classList.replace("main-page-width","quizz-page-width")
   const quizzes = document.querySelector(".allQuizzes");
   //Aqui embaixo é inserido o banner que fica no topo do Quizz a imagem e o título do quizz.
   quizzes.innerHTML=`
@@ -170,6 +171,7 @@ function answerCheck() {
   setTimeout(autoScrollQuizzResult, 2000)
 }
 function restartQuizz(){
+    document.querySelector(".allQuizzes.quizz-page-width").classList.replace("quizz-page-width","main-page-width")
     const selectionID= currentQuizzData.data.id
     const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
     promise.then(renderChoosenQuizz);
@@ -433,7 +435,7 @@ function createMain(){
 
 <div class="main-list">
   <p class="main-title">Todos os Quizzes</p>
-  <ul class="allQuizzes"></ul>
+  <ul class="allQuizzes main-page-width"></ul>
 </div>
 `
 }

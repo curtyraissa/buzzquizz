@@ -59,6 +59,7 @@ header {
 main {
   /* width: 1051px; */
   display: block;
+  margin-top: 48px;
 }
 
 .main-create {
@@ -112,7 +113,7 @@ main {
   width: 100%;
   display: flex;
   align-items: center;
-  margin: 48px 0 17px;
+  margin: 0 0 17px;
 }
 
 .user-title {
@@ -589,7 +590,7 @@ p.invisible.alert {
 @media (max-width: 376px) {
   main {
     width: 375px;
-    margin: auto;
+    margin: 38px auto auto auto;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -616,7 +617,7 @@ p.invisible.alert {
 
   .criaQuizz {
     justify-content: space-between;
-    margin: 38px 0 16px 0;
+    margin: 0 0 16px 0;
   }
 
   /* tela criacao do quiz */

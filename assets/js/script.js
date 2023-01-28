@@ -381,17 +381,15 @@ function renderUserQuizzes(quizzInfo){
         for (let j=0; j<purgedUserId.length;j++){
           if (purgedUserId[j]==quizzInfo.data[i].id){
           quizzes.innerHTML += `
-          <li id="${quizzInfo.data[i].id}" onclick="getChoosenQuizzData(this)">
-            <img class="userQuizzes-img" src=${quizzInfo.data[i].image} alt="img do quizz">
+          <li id="${quizzInfo.data[i].id}" onclick="getChoosenQuizzData(this)" class="allQuizzes-card" style="background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 64.58%, #000000 100%), url(${quizzInfo.data[i].image});">
            <p class="userQuizzes-title">${quizzInfo.data[i].title}</p>
           </li>
           `;
-          }
         }
     }
 
   }
-}
+}}
 function purgeUserId(quizz){
   if (treatedUserId.length>0){
     for (let k = 0; k < quizz.data.length; k++){

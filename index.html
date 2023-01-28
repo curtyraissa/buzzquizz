@@ -29,7 +29,9 @@
             <div class="hide user-list">
                 <div class="criaQuizz">
                     <p class="user-title">Seus Quizzes</p>
-                    <button onclick="abreCriacaoQuizz()"><ion-icon name="add-circle"></ion-icon></button>
+                    <button onclick="abreCriacaoQuizz()">
+                        <ion-icon class="criarQuizz-icon" name="add-circle"></ion-icon>
+                    </button>
                 </div>
                 <ul class="userQuizzes">
                 </ul>
@@ -44,7 +46,7 @@
     </div>
 
     <div class="paginaCriacaoQuizz">
-         <div class="comecoCriaQuizz hide">
+        <div class="comecoCriaQuizz hide">
             <p class="mb-27">Comece pelo começo</p>
             <form class="box-form">
                 <input id="tituloQuizz" type="text" placeholder="Título do seu quizz">
@@ -54,7 +56,11 @@
             </form>
             <p class="invisible">Os dados inseridos não são válidos!</p>
             <button onclick="informacoesBasicasQuizz()">Prosseguir para criar perguntas</button>
+<<<<<<< HEAD
         </div>  
+=======
+        </div>
+>>>>>>> feature-raissa
 
         <div class="perguntasCriaQuizz comecoCriaQuizz hide">
             <p class="comecoCriaQuizz-title">Crie suas perguntas</p>
@@ -82,10 +88,56 @@
                 <ion-icon name="create-outline"></ion-icon>
             </div>
             <button onclick="criarPerguntasQuizz()">Prosseguir pra criar níveis</button>
+<<<<<<< HEAD
         </div> 
 
         <div class="nivelCriaQuizz"></div>
 
+=======
+        </div>
+
+        <div class="nivelCriaQuizz">
+            <p class="comecoCriaQuizz-title mb-27">Agora, decida os níveis!</p>
+            <div class="box-form pt-00">
+                <div class="container">
+                    <p>Nível 1</p>
+                    <ion-icon onclick="abreFormulario(this)" name="create-outline"></ion-icon>
+                </div>
+                <form class="hide">
+                    <input class="nivel-titulo" id="tituloNivel1" type="text" placeholder="Título do nível">
+                    <input class="nivel-acerto-minimo" id="acertoMinimo1" type="text" placeholder="% de acerto mínima">
+                    <input class="nivel-URL" id="imgNivel1" type="url" placeholder="URL da imagem do nível">
+                    <input class="nivel-descricao" id="descricaoNivel1" type="text" placeholder="Descrição do nível">
+                </form>
+            </div>
+            <div class="box-form pt-00">
+                <div class="container">
+                    <p>Nível 2</p>
+                    <ion-icon onclick="abreFormulario(this)" name="create-outline"></ion-icon>
+                </div>
+                <form class="hide">
+                    <input class="nivel-titulo" id="tituloNivel2" type="text" placeholder="Título do nível">
+                    <input class="nivel-acerto-minimo" id="acertoMinimo2" type="text" placeholder="% de acerto mínima">
+                    <input class="nivel-URL" id="imgNivel2" type="url" placeholder="URL da imagem do nível">
+                    <input class="nivel-descricao" id="descricaoNivel2" type="text" placeholder="Descrição do nível">
+                </form>
+            </div>
+            <div class="box-form pt-00">
+                <div class="container">
+                    <p>Nível 3</p>
+                    <ion-icon onclick="abreFormulario(this)" name="create-outline"></ion-icon>
+                </div>
+                <form class="hide">
+                    <input class="nivel-titulo" id="tituloNivel3" type="text" placeholder="Título do nível">
+                    <input class="nivel-acerto-minimo" id="acertoMinimo3" type="text" placeholder="% de acerto mínima">
+                    <input class="nivel-URL" id="imgNivel3" type="url" placeholder="URL da imagem do nível">
+                    <input class="nivel-descricao" id="descricaoNivel3" type="text" placeholder="Descrição do nível">
+                </form>
+            </div>
+            <p class="invisible">Os dados inseridos não são válidos!</p>
+            <button onclick="informacoesNivelQuizz()">Prosseguir para criar perguntas</button>
+        </div>
+>>>>>>> feature-raissa
 
         <div class="pageSucessoQuizz hide">
             <p class="pageSucessoQuizz-title">Seu quizz está pronto!</p>
@@ -95,7 +147,9 @@
                 <div class="botaoVoltar" onclick="returnHome()">Voltar pra home</div>
             </div>
         </div>
+
     </div>
+    
 </body>
 
 </html>

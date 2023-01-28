@@ -132,7 +132,13 @@ ion-icon {
   height: 30px
 }
 
-.criaQuizz button ion-icon {
+
+ion-icon:hover {
+  cursor: pointer;
+  opacity: .6;
+}
+
+.criaQuizz-icon {
   border-radius: 50px;
   color: var(--red);
   background-color: var(--white);
@@ -324,8 +330,6 @@ ion-icon {
 .nivelCriaQuizz p,
 .comecoCriaQuizz p {
   color: var(--black);
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
   font-weight: 700;
   font-size: 23px;
   line-height: 27px;
@@ -355,11 +359,6 @@ ion-icon {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
   padding: 27px 20px 15px 16px;
   margin-bottom: 24px;
-}
-
-.paginaCriacaoQuizz ion-icon:hover {
-  cursor: pointer;
-  opacity: .6;
 }
 
 .paginaCriacaoQuizz input {

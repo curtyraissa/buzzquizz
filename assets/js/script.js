@@ -70,7 +70,7 @@ function renderChoosenQuizz(quizzInfo){
       quizzOptions.innerHTML+=`
       <div class="unselected option ${quizzInfo.data.questions[i].answers[j].isCorrectAnswer}" onclick="selectOption(this)">
         <img class ="unselected-img" src="${quizzInfo.data.questions[i].answers[j].image}" alt="">
-        <p>${quizzInfo.data.questions[i].answers[j].text}</p>
+        <p class="alternative-text">${quizzInfo.data.questions[i].answers[j].text}</p>
       </div>
       `
     }
@@ -106,12 +106,14 @@ function correctAnswerTextChange(){
   const corretos = document.querySelectorAll("div.answered .true p")
   corretos.forEach(div => {
       div.classList.add("correto")
+      div.classList.remove("alternative-text")
   })
 }
 function incorrectAnswerTextChnge(){
   const incorretos = document.querySelectorAll("div.answered .false p")
   incorretos.forEach(div => {
       div.classList.add("incorreto")
+      div.classList.remove("alternative-text")
   })
 }
 function autoQuizzScroll(){

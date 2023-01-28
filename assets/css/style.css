@@ -320,7 +320,7 @@ ion-icon:hover {
   margin-top: 20px;
 }
 
-.alternatives-box p {
+.alternatives-box p .alternative-text{
   width: 329px;
   font-weight: 700;
   font-size: 20px;
@@ -535,10 +535,16 @@ p.invisible.alert {
 
 .correto {
   color: var(--gren);
+  width: 329px;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 .incorreto {
   color: var(--red);
+  width: 329px;
+  font-weight: 700;
+  font-size: 20px;
 }
 
 .pageSucessoQuizz-botao {

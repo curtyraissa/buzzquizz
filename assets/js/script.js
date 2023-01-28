@@ -68,7 +68,7 @@ function renderChoosenQuizz(quizzInfo){
     for (let j=0; j<quizzInfo.data.questions[i].answers.length;j++){
       quizzOptions.innerHTML+=`
       <div class="unselected option ${quizzInfo.data.questions[i].answers[j].isCorrectAnswer}" onclick="selectOption(this)">
-        <img src="${quizzInfo.data.questions[i].answers[j].image}" alt="">
+        <img class ="unselected-img" src="${quizzInfo.data.questions[i].answers[j].image}" alt="">
         <p>${quizzInfo.data.questions[i].answers[j].text}</p>
       </div>
       `

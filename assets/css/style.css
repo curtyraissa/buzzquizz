@@ -286,10 +286,7 @@ ion-icon:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top:27.91px;
-  padding-left: 36.43px;
-  padding-right: 34.41px;
-  padding-bottom: 35.66px;    
+  padding:27.91px 34.41px 35.66px 36.43px; 
   background: #FFFFFF;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
@@ -301,20 +298,33 @@ ion-icon:hover {
   justify-content: center;
   margin-bottom: 20.16px;
 }
+
+.options-of-question-0 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.unselected-img
+{
+width: 329.91px;
+height: 175.2px;
+}
 .question-declaration p{
-  font-family: 'Roboto';
-  font-style: normal;
   font-weight: 700;
   font-size: 23px;
-  line-height: 27px;
   display: flex;
+  justify-content: center;
   align-items: center;
   text-align: center;
   color: #FFFFFF;
 }
-.alternatives-box{
+
+/* .alternatives-box{
   display: flex;
-}
+} */
 /*CSS da criação dos quizzes*/
 .nivelCriaQuizz,
 .pageSucessoQuizz,

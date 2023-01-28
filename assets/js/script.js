@@ -56,7 +56,7 @@ function renderChoosenQuizz(quizzInfo){
       <div class="question-declaration" style="background-color:${quizzInfo.data.questions[i].color}">
         <p>${quizzInfo.data.questions[i].title}</p>
       </div>
-      <div class="options-of-question-${i}">
+      <div class="options-of-question-${i} alternatives-box">
       </div>
     </div>`
     quizzInfo.data.questions[i].answers.sort(shuffle);

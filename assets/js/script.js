@@ -373,6 +373,7 @@ function criarQuizzPostProcessing(variable){
 }
 
 function renderUserQuizzes(quizzInfo){
+  getlocalStorage()
   reducePurgedUserId();
   if (purgedUserId.length>0){
     document.querySelector(".hide.user-list").classList.remove("hide");
@@ -433,6 +434,5 @@ function createMain(){
 </div>
 `
 }
-getlocalStorage(); //ESSA FUNÇÃO TEM DE SER SEMPRE A PRIMEIRA A SER EXECUTADA!
 createMain()
 getQuizzes();

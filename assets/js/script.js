@@ -174,7 +174,7 @@ function restartQuizz(){
 function returnHome(){
   createMain()
   getQuizzes()
-  document.querySelector("body").scrollIntoView();
+  document.querySelector(".paginaInicial").scrollIntoView();
   document.querySelector('.pageSucessoQuizz').classList.add('hide');
   document.querySelector('.paginaInicial').classList.remove('hide')
 

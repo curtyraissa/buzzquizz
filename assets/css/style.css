@@ -56,11 +56,12 @@ header {
 }
 
 main {
-  width: 1051px;
+  /* width: 1051px; */
   display: block;
 }
 
 .main-create {
+  margin: auto !important;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -99,6 +100,8 @@ main {
 }
 
 .user-list {
+  width: 1051px;
+  margin: auto;
   display: flex;
   flex-direction: column;
   margin-bottom: 48px;
@@ -161,20 +164,20 @@ ion-icon:hover {
   position: relative;
 }
 
-.userQuizzes-img{
+.userQuizzes-img {
   background-color: var(--pink);
   width: 340px;
   height: 181px;
   border-radius: 5px;
 }
 
-.pageSucessoQuizz-img{
+.pageSucessoQuizz-img {
   position: relative;
   width: 500px;
   height: 266px;
 }
 
-.pageSucessoQuizz-img div{
+.pageSucessoQuizz-img div {
   width: 500px;
   height: 266px;
   z-index: 10;
@@ -184,12 +187,12 @@ ion-icon:hover {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%);
 }
 
-.pageSucessoQuizz-img img{
+.pageSucessoQuizz-img img {
   width: 500px;
   height: 266px;
 }
 
-.pageSucessoQuizz-img p{
+.pageSucessoQuizz-img p {
   color: var(--white);
   font-family: 'Roboto', sans-serif;
   font-style: normal;
@@ -219,6 +222,8 @@ ion-icon:hover {
 }
 
 .main-title {
+  margin: 55px auto;
+  width: 1051px;
   font-weight: 700;
   font-size: 20px;
   color: var(--black);
@@ -254,19 +259,20 @@ ion-icon:hover {
   bottom: 20px;
   left: 17px;
 }
+
 /*Essa aqui é a classe que eu criei pra tentar arrumar o gradiente*/
-.allQuizzes-card{
-    width: 340px;
-    height: 181px;
-    border-radius: 5px;
-    background-position:  center;
-    background-size: 340px 181px;
+.allQuizzes-card {
+  width: 340px;
+  height: 181px;
+  border-radius: 5px;
+  background-position: center;
+  background-size: 340px 181px;
 }
 
-.banner-quizz{
+.banner-quizz {
   height: 227px;
   width: 100%;
-  background-position:  center;
+  background-position: center;
   background-size: 100% auto;
   display: flex;
   flex-direction: column;
@@ -274,7 +280,8 @@ ion-icon:hover {
   scroll-margin-top: 69px;
   justify-content: center;
 }
-.banner-quizz p{
+
+.banner-quizz p {
   font-weight: 400;
   font-size: 39px;
   line-height: 46px;
@@ -283,15 +290,18 @@ ion-icon:hover {
   text-align: center;
   align-items: center;
 }
-.question-box{
+
+.question-box {
+  width: 1051px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding:27.91px 34.41px 35.66px 36.43px; 
+  padding: 27.91px 34.41px 35.66px 36.43px;
   background: #FFFFFF;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
-.question-declaration{
+
+.question-declaration {
   width: 688.16px;
   height: 137px;
   display: flex;
@@ -301,7 +311,7 @@ ion-icon:hover {
   margin: auto;
 }
 
-.alternatives-box{
+.alternatives-box {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -310,12 +320,16 @@ ion-icon:hover {
   margin-top: 20px;
 }
 
-.unselected-img
-{
-width: 329.91px;
-height: 175.2px;
+.alternatives-box p {
+  width: 329px;
 }
-.question-declaration p{
+
+.unselected-img {
+  width: 329.91px;
+  height: 175.2px;
+}
+
+.question-declaration p {
   font-weight: 700;
   font-size: 23px;
   display: flex;
@@ -329,7 +343,7 @@ height: 175.2px;
 
 */
 
-.restart-quizz{
+.restart-quizz {
   width: 260.38px;
   height: 52px;
   border-radius: 15px;
@@ -345,6 +359,7 @@ height: 175.2px;
   line-height: 25px;
   color: #FFF5F4;
 }
+
 .restart-quizz:hover {
   cursor: pointer;
   background-color: var(--red-100);
@@ -352,7 +367,7 @@ height: 175.2px;
   border: 1px solid var(--red);
 }
 
-.return-home{
+.return-home {
   width: 219.64px;
   height: 44px;
   font-family: 'Roboto';
@@ -368,13 +383,12 @@ height: 175.2px;
   border: none;
   background-color: transparent;
 }
-.return-home:hover{
+
+.return-home:hover {
   cursor: pointer;
   color: var(--black);
 }
-/* .alternatives-box{
-  display: flex;
-} */
+
 /*CSS da criação dos quizzes*/
 .nivelCriaQuizz,
 .pageSucessoQuizz,
@@ -511,12 +525,13 @@ p.invisible.alert {
   transition: .5s;
 }
 
-.unanswered,.resultado-quizz{
-  scroll-margin-top:69px;
-width: 759px;
-/* height: 676px; */
-background: #FFFFFF;
-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+.unanswered,
+.resultado-quizz {
+  scroll-margin-top: 69px;
+  width: 759px;
+  /* height: 676px; */
+  background: #FFFFFF;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 
 /*
@@ -534,19 +549,19 @@ Classes pertinentes ao requisito "Comportamento das respostas"
   color: red;
 }
 
-.pageSucessoQuizz-botao{
+.pageSucessoQuizz-botao {
   display: flex;
   flex-direction: column;
   gap: 9px;
   margin-top: 24px;
 }
 
-.pageSucessoQuizz-botao button{
+.pageSucessoQuizz-botao button {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.botaoVoltar{
+.botaoVoltar {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -557,7 +572,7 @@ Classes pertinentes ao requisito "Comportamento das respostas"
   margin-bottom: 35px;
 }
 
-.botaoVoltar:hover{
+.botaoVoltar:hover {
   color: var(--red);
 }
 

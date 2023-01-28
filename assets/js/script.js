@@ -180,7 +180,8 @@ function returnHome(){
 
 }
 function autoScrollQuizzResult(){
-      document.querySelector(".resultado-quizz").scrollIntoView();
+  if (document.querySelector(".resultado-quizz") != null){
+      document.querySelector(".resultado-quizz").scrollIntoView()};
 }
 function abreCriacaoQuizz(){
   document.querySelector('.paginaInicial').classList.add('hide');

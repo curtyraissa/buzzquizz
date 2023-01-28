@@ -373,6 +373,7 @@ function criarQuizzPostProcessing(variable){
 }
 
 function renderUserQuizzes(quizzInfo){
+  reducePurgedUserId();
   if (purgedUserId.length>0){
     document.querySelector(".hide.user-list").classList.remove("hide");
     document.querySelector(".main-create").classList.add("hide");
@@ -391,6 +392,14 @@ function renderUserQuizzes(quizzInfo){
 
   }
 }}
+function reducePurgedUserId(){
+    purgedUserId = purgedUserId.reduce(function (acc, curr) {
+      if (!acc.includes(curr))
+          acc.push(curr);
+      return acc;
+  }, []);
+  return purgedUserId
+};
 function purgeUserId(quizz){
   if (treatedUserId.length>0){
     for (let k = 0; k < quizz.data.length; k++){

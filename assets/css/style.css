@@ -325,6 +325,53 @@ height: 175.2px;
   color: #FFFFFF;
 }
 
+/*
+
+*/
+
+.restart-quizz{
+  width: 260.38px;
+  height: 52px;
+  border-radius: 15px;
+  border: none;
+  background-color: #EC362D;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  color: #FFF5F4;
+}
+.restart-quizz:hover {
+  cursor: pointer;
+  background-color: var(--red-100);
+  color: var(--red);
+  border: 1px solid var(--red);
+}
+
+.return-home{
+  width: 219.64px;
+  height: 44px;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #818181;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+.return-home:hover{
+  cursor: pointer;
+  color: var(--black);
+}
 /* .alternatives-box{
   display: flex;
 } */

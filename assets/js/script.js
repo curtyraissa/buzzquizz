@@ -157,11 +157,11 @@ function answerCheck() {
             <p>${storedValueLevel.text}</p>
           </div>
         </div>
-        <button onclick="restartQuizz()">
-          <p>Reiniciar Quizz</p>
+        <button class="restart-quizz" onclick="restartQuizz()">
+          Reiniciar Quizz
         </button>
-        <button onclick="returnHome()">
-          <p>Voltar para home</p>
+        <button class="return-home" onclick="returnHome()">
+          Voltar para home
         </button>
       `;
   setTimeout(autoScrollQuizzResult, 2000)

@@ -96,7 +96,7 @@
 ## 🚀 &nbsp;Links
 
 - [Figma](https://www.figma.com/file/nCuPD1re0r4EAwNl7OCNvz/BuzzQuizz---Turma-02?node-id=147%3A424&t=F7OEEpyztKMmHlqi-0).<br/>
-- [Deploy](https://projeto6-buzzquizz-sandy.vercel.app/).<br/>
+- [Deploy](https://curtyraissa.github.io/projeto6-buzzquizz/).<br/>
 ___
 
 <!-- ## 💬 &nbsp;Contributors

@@ -564,15 +564,66 @@ function criarQuizzPostProcessing(variable){
 }
 
 function PlayCreatedQuizz(){
-  renderUserCreatedQuizz();
-}
-function renderUserCreatedQuizz(){
   const idOfLastQuizz = treatedUserId[treatedUserId.length-1];
   console.log(idOfLastQuizz)
   const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idOfLastQuizz}`)
-  promise.then(renderChoosenQuizz);
+  promise.then(renderUserCreatedQuizz);
   console.log(promise)
 }
+
+function renderUserCreatedQuizz(quizzInfo){
+  console.log(quizzInfo)
+  document.querySelector(".paginaInicial.hide").classList.remove("hide");
+  document.querySelector(".paginaCriacaoQuizz").classList.add("hide");
+  unrenderUserQuizzes()
+  document.querySelector(".main-title").classList.add("hide");
+  document.querySelector(".main-create").classList.add("hide");
+  document.querySelector(".user-list").classList.add("hide");
+  if (document.querySelector(".allQuizzes.main-page-width")!=null){
+  document.querySelector(".allQuizzes.main-page-width").classList.replace("main-page-width","quizz-page-width")}
+  const quizzes = document.querySelector(".allQuizzes");
+  //Aqui embaixo é inserido o banner que fica no topo do Quizz a imagem e o título do quizz.
+  quizzes.innerHTML=`
+  <div id="${quizzInfo.data.id}" class="banner-quizz" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url(${quizzInfo.data.image})">
+        <p>${quizzInfo.data.title}</p>
+  </div>
+  <div class="quizz-things">
+  </div>
+  `
+  document.querySelector(".banner-quizz").scrollIntoView();
+  const quizzThings = document.querySelector(".quizz-things");
+  //Aqui embaixo é inserido cada questão individual do Quizz
+  for (let i=0; i<quizzInfo.data.questions.length;i++){
+    /*
+    Na função abaixo deve ser incluso a cor de cada pergunta individual!
+               
+    */
+    quizzThings.innerHTML+=`
+    <div class="unanswered question-box">
+      <div class="question-declaration" style="background-color:${quizzInfo.data.questions[i].color}">
+        <p>${quizzInfo.data.questions[i].title}</p>
+      </div>
+      <div class="options-of-question-${i} alternatives-box">
+      </div>
+    </div>`
+    quizzInfo.data.questions[i].answers.sort(shuffle);
+  }
+  for (let i=0; i<quizzInfo.data.questions.length;i++){
+    //Percorre todas as divs de questões.
+    const quizzOptions = document.querySelector(`.options-of-question-${i}`)
+    quizzOptions.innerHTML=""
+    for (let j=0; j<quizzInfo.data.questions[i].answers.length;j++){
+      quizzOptions.innerHTML+=`
+      <div class="unselected option ${quizzInfo.data.questions[i].answers[j].isCorrectAnswer}" onclick="selectOption(this)">
+        <img class ="unselected-img" src="${quizzInfo.data.questions[i].answers[j].image}" alt="">
+        <p class="alternative-text">${quizzInfo.data.questions[i].answers[j].text}</p>
+      </div>
+      `
+    }
+  }
+  currentQuizzData=quizzInfo;
+}
+
 
 function renderUserQuizzes(quizzInfo){
   getlocalStorage()

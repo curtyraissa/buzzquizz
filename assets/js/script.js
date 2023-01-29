@@ -38,21 +38,25 @@ function renderChoosenQuizz(quizzInfo){
   document.querySelector(".main-title").classList.add("hide");
   document.querySelector(".main-create").classList.add("hide");
   document.querySelector(".user-list").classList.add("hide");
+  document.querySelector(".allQuizzes.main-page-width").classList.replace("main-page-width","quizz-page-width")
   const quizzes = document.querySelector(".allQuizzes");
   //Aqui embaixo é inserido o banner que fica no topo do Quizz a imagem e o título do quizz.
   quizzes.innerHTML=`
   <div id="${quizzInfo.data.id}" class="banner-quizz" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url(${quizzInfo.data.image})">
         <p>${quizzInfo.data.title}</p>
   </div>
+  <div class="quizz-things">
+  </div>
   `
   document.querySelector(".banner-quizz").scrollIntoView();
+  const quizzThings = document.querySelector(".quizz-things");
   //Aqui embaixo é inserido cada questão individual do Quizz
   for (let i=0; i<quizzInfo.data.questions.length;i++){
     /*
     Na função abaixo deve ser incluso a cor de cada pergunta individual!
                
     */
-    quizzes.innerHTML+=`
+    quizzThings.innerHTML+=`
     <div class="unanswered question-box">
       <div class="question-declaration" style="background-color:${quizzInfo.data.questions[i].color}">
         <p>${quizzInfo.data.questions[i].title}</p>
@@ -70,7 +74,7 @@ function renderChoosenQuizz(quizzInfo){
       quizzOptions.innerHTML+=`
       <div class="unselected option ${quizzInfo.data.questions[i].answers[j].isCorrectAnswer}" onclick="selectOption(this)">
         <img class ="unselected-img" src="${quizzInfo.data.questions[i].answers[j].image}" alt="">
-        <p>${quizzInfo.data.questions[i].answers[j].text}</p>
+        <p class="alternative-text">${quizzInfo.data.questions[i].answers[j].text}</p>
       </div>
       `
     }
@@ -106,12 +110,14 @@ function correctAnswerTextChange(){
   const corretos = document.querySelectorAll("div.answered .true p")
   corretos.forEach(div => {
       div.classList.add("correto")
+      div.classList.remove("alternative-text")
   })
 }
 function incorrectAnswerTextChnge(){
   const incorretos = document.querySelectorAll("div.answered .false p")
   incorretos.forEach(div => {
       div.classList.add("incorreto")
+      div.classList.remove("alternative-text")
   })
 }
 function autoQuizzScroll(){
@@ -147,27 +153,34 @@ function answerCheck() {
       }
     }
 		}
-  const quizzes = document.querySelector(".allQuizzes");
-	quizzes.innerHTML += `
+  const quizzThings = document.querySelector(".quizz-things");
+	quizzThings.innerHTML += `
         <div class="resultado-quizz">
-          <div>
+          <div class="acerto-e-title">
             <p>${correctAnswerPercent}% de acerto: ${storedValueLevel.title}</p>
           </div>
-          <div>
+          <div class="results-image-text">
             <img src="${storedValueLevel.image}" alt="">
             <p>${storedValueLevel.text}</p>
           </div>
         </div>
-        <button class="restart-quizz" onclick="restartQuizz()">
-          Reiniciar Quizz
-        </button>
-        <button class="return-home" onclick="returnHome()">
-          Voltar para home
-        </button>
+        <div>
+          <button class="restart-quizz" onclick="restartQuizz()">
+            Reiniciar Quizz
+          </button>
+          <button class="return-home" onclick="returnHome()">
+            Voltar para home
+          </button>
+        </div>
       `;
+  document.querySelector(".restart-quizz").parentNode.classList.add("result-bottom-buttons")
   setTimeout(autoScrollQuizzResult, 2000)
 }
 function restartQuizz(){
+    if (document.querySelector(".allQuizzes.quizz-page-width")!= null){
+      document.querySelector(".allQuizzes.quizz-page-width").classList.replace("quizz-page-width","main-page-width")
+
+    }
     const selectionID= currentQuizzData.data.id
     const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
     promise.then(renderChoosenQuizz);
@@ -191,11 +204,22 @@ function abreCriacaoQuizz(){
 function abreFormulario(caixa){
   caixa.parentNode.parentNode.querySelector('form').classList.toggle('hide');
 }
+
+//======================================================================================================
 //Pega as informações básicas do quizz criado (1ª página)
 let tituloQuizz;
 let imagemQuizzURL;
 let numDePerguntas;
 let numDeNiveis;
+
+//                                 A VARIÁVEL A BAIXO É A QUE SERÁ ENVIADA PARA O SERVIDOR
+let userQuizz = {
+  title: "",
+  image: "",
+  questions: [],
+  levels: []
+}
+
 
 function informacoesBasicasQuizz(){
   tituloQuizz = 0;
@@ -221,6 +245,10 @@ function informacoesBasicasQuizz(){
 
   const alerta = document.querySelector('.comecoCriaQuizz .invisible');
   console.log(tituloQuizz, imagemQuizzURL ,numDeNiveis ,numDePerguntas);
+
+  //                                  AQUI EMBAIXO SALVA O TITULO E IMAGEM
+  userQuizz.title = tituloQuizz;
+  userQuizz.image = imagemQuizzURL;
 
   if(tituloQuizz&&imagemQuizzURL&&numDePerguntas&&numDeNiveis){
     document.querySelector('.comecoCriaQuizz').classList.add('hide');
@@ -383,6 +411,13 @@ function informacoesNivelQuizz(){
     text: elemento4[i].value,
     minValue: elemento2[i].value});
   }
+
+
+  //                       AQUI EMBAIXO ESTÁ SALVANDO OS NÍVEIS
+  userQuizz.levels=[]
+  userQuizz.levels.push(niveis);
+  //Esvazia primeiro pra limpar caso o usuário for querer criar mais um Quizz
+  //depois e não recarregar a página
   elemento1.forEach((valor)=> {valor.value = "";});
   elemento2.forEach((valor)=> {valor.value = "";});
   elemento3.forEach((valor)=> {valor.value = "";});
@@ -400,13 +435,16 @@ function criaPaginaFinalização(){
       <button onclick="">Acessar Quizz</button>
       <div class="botaoVoltar" onclick="returnHome()">Voltar pra home</div>
   </div>`;
+
+  criarQuizz()
+  
   document.querySelector('.pageSucessoQuizz-img').innerHTML = `
   <img src="${imagemQuizzURL}" alt="Imagem do seu quizz">
   <p>${tituloQuizz}</p>
   <div></div>
   `;
 }
-
+// ========================================================================================================
 function getlocalStorage(){
   const stringuserId = localStorage.getItem("id")
   if (stringuserId !== null){
@@ -416,15 +454,8 @@ function getlocalStorage(){
 }
 
 function criarQuizz(){
-    //A operação abaixo existe somente para testes através do envio direto do Quizz para a API
-    /*
-    
-    const promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes",
-      {title:"T\xedtulo do quizz",image:"https://http.cat/411.jpg",questions:[{title:"T\xedtulo da pergunta 1",color:"#123456",answers:[{text:"Texto da resposta 1",image:"https://http.cat/411.jpg",isCorrectAnswer:!0},{text:"Texto da resposta 2",image:"https://http.cat/412.jpg",isCorrectAnswer:!1}]},{title:"T\xedtulo da pergunta 2",color:"#123456",answers:[{text:"Texto da resposta 1",image:"https://http.cat/411.jpg",isCorrectAnswer:!0},{text:"Texto da resposta 2",image:"https://http.cat/412.jpg",isCorrectAnswer:!1}]},{title:"T\xedtulo da pergunta 3",color:"#123456",answers:[{text:"Texto da resposta 1",image:"https://http.cat/411.jpg",isCorrectAnswer:!0},{text:"Texto da resposta 2",image:"https://http.cat/412.jpg",isCorrectAnswer:!1}]}],levels:[{title:"T\xedtulo do n\xedvel 1",image:"https://http.cat/411.jpg",text:"Descri\xe7\xe3o do n\xedvel 1",minValue:0},{title:"T\xedtulo do n\xedvel 2",image:"https://http.cat/412.jpg",text:"Descri\xe7\xe3o do n\xedvel 2",minValue:50}]
-    })
-
+    const promise = axios.post("https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes", userQuizz)
     promise.then(criarQuizzPostProcessing)
-    */
 }
 function criarQuizzPostProcessing(variable){
   const currentID=variable.data.id
@@ -433,6 +464,12 @@ function criarQuizzPostProcessing(variable){
   console.log(userId)
   localStorage.setItem("id",userId)
   treatedUserId = JSON.parse("[" + userId + "]")
+}
+
+function PlayCreatedQuizz(){
+  const idOfLastQuizz = treatedUserId[treatedUserId.length-1];
+  const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idOfLastQuizz}`)
+  promise.then(renderChoosenQuizz);
 }
 
 function renderUserQuizzes(quizzInfo){
@@ -493,7 +530,7 @@ function createMain(){
 
 <div class="main-list">
   <p class="main-title">Todos os Quizzes</p>
-  <ul class="allQuizzes"></ul>
+  <ul class="allQuizzes main-page-width"></ul>
 </div>
 `
 }

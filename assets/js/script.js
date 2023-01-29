@@ -195,11 +195,19 @@ function abreCriacaoQuizz(){
 function abreFormulario(caixa){
   caixa.parentNode.parentNode.querySelector('form').classList.toggle('hide');
 }
+//======================================================================================================
 //Pega as informações básicas do quizz criado (1ª página)
 let tituloQuizz;
 let imagemQuizzURL;
 let numDePerguntas;
 let numDeNiveis;
+
+let userQuizz = {
+  title: "",
+  image: "",
+  questions: [],
+  levels: []
+}
 
 function informacoesBasicasQuizz(){
   tituloQuizz = 0;
@@ -225,6 +233,9 @@ function informacoesBasicasQuizz(){
 
   const alerta = document.querySelector('.comecoCriaQuizz .invisible');
   console.log(tituloQuizz, imagemQuizzURL ,numDeNiveis ,numDePerguntas);
+
+  userQuizz.title = tituloQuizz;
+  userQuizz.image = imagemQuizzURL;
 
   if(tituloQuizz&&imagemQuizzURL&&numDePerguntas&&numDeNiveis){
     document.querySelector('.comecoCriaQuizz').classList.add('hide');
@@ -332,6 +343,7 @@ function informacoesNivelQuizz(){
     text: elemento4[i].value,
     minValue: elemento2[i].value});
   }
+  userQuizz.levels.push(niveis);
   elemento1.forEach((valor)=> {valor.value = "";});
   elemento2.forEach((valor)=> {valor.value = "";});
   elemento3.forEach((valor)=> {valor.value = "";});
@@ -348,7 +360,7 @@ function criaPaginaFinalização(){
   <div></div>
   `;
 }
-
+// ========================================================================================================
 function getlocalStorage(){
   const stringuserId = localStorage.getItem("id")
   if (stringuserId !== null){

@@ -607,7 +607,8 @@ function purgeUserId(quizz){
   }}
 }
 function createMain(){
-  const mainContent = document.querySelector("main")
+  const mainContent = document.querySelector("main");
+  const criationContent = document.querySelector('.paginaCriacaoQuizz');
   mainContent.innerHTML=`
   <div class="main-create">
   <p>Você não criou nenhum quizz ainda :(</p>
@@ -626,7 +627,22 @@ function createMain(){
 <div class="main-list">
   <p class="main-title">Todos os Quizzes</p>
   <ul class="allQuizzes main-page-width"></ul>
-</div>
+</div>`
+criationContent.innerHTML =`
+  <div class="comecoCriaQuizz hide">
+    <p class="comecoCriaQuizz-title ">Comece pelo começo</p>
+    <form class="box-form">
+      <input id="tituloQuizz" type="text" placeholder="Título do seu quizz">
+      <input id="imagemQuizz" type="url" placeholder="URL da imagem do seu quizz">
+      <input id="numPerguntasQuizz" type="text" placeholder="Quantidade de perguntas do quizz">
+      <input id="numNiveisQuizz" type="text" placeholder="Quantidade de níveis do quizz">
+    </form>
+    <p class="invisible">Os dados inseridos não são válidos!</p>
+    <button onclick="informacoesBasicasQuizz()">Prosseguir para criar perguntas</button>
+  </div>  
+  <div class="perguntasCriaQuizz comecoCriaQuizz hide"></div>
+  <div class="nivelCriaQuizz hide"></div>
+  <div class="pageSucessoQuizz hide"></div>
 `
 }
 createMain()

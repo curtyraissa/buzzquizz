@@ -34,11 +34,13 @@ function unrenderUserQuizzes(){
   document.querySelector(".user-list").classList.add("hide");
 }
 function renderChoosenQuizz(quizzInfo){
+  console.log(quizzInfo)
   unrenderUserQuizzes()
   document.querySelector(".main-title").classList.add("hide");
   document.querySelector(".main-create").classList.add("hide");
   document.querySelector(".user-list").classList.add("hide");
-  document.querySelector(".allQuizzes.main-page-width").classList.replace("main-page-width","quizz-page-width")
+  if (document.querySelector(".allQuizzes.main-page-width")!=null){
+  document.querySelector(".allQuizzes.main-page-width").classList.replace("main-page-width","quizz-page-width")}
   const quizzes = document.querySelector(".allQuizzes");
   //Aqui embaixo é inserido o banner que fica no topo do Quizz a imagem e o título do quizz.
   quizzes.innerHTML=`
@@ -558,12 +560,18 @@ function criarQuizzPostProcessing(variable){
   console.log(userId)
   localStorage.setItem("id",userId)
   treatedUserId = JSON.parse("[" + userId + "]")
+  console.log(treatedUserId)
 }
 
 function PlayCreatedQuizz(){
+  renderUserCreatedQuizz();
+}
+function renderUserCreatedQuizz(){
   const idOfLastQuizz = treatedUserId[treatedUserId.length-1];
+  console.log(idOfLastQuizz)
   const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idOfLastQuizz}`)
   promise.then(renderChoosenQuizz);
+  console.log(promise)
 }
 
 function renderUserQuizzes(quizzInfo){

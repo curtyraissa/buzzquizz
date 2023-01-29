@@ -527,11 +527,12 @@ function criaPaginaFinalização(){
   <p class="pageSucessoQuizz-title">Seu quizz está pronto!</p>
   <div class="pageSucessoQuizz-img"></div>
   <div class="pageSucessoQuizz-botao">
-      <button onclick="">Acessar Quizz</button>
+      <button onclick="PlayCreatedQuizz()">Acessar Quizz</button>
       <div class="botaoVoltar" onclick="returnHome()">Voltar pra home</div>
   </div>`;
 
   criarQuizz()
+  console.log(userQuizz)
 
   document.querySelector('.pageSucessoQuizz-img').innerHTML = `
   <img src="${imagemQuizzURL}" alt="Imagem do seu quizz">

@@ -195,6 +195,7 @@ function abreCriacaoQuizz(){
 function abreFormulario(caixa){
   caixa.parentNode.parentNode.querySelector('form').classList.toggle('hide');
 }
+
 //======================================================================================================
 //Pega as informações básicas do quizz criado (1ª página)
 let tituloQuizz;
@@ -202,12 +203,14 @@ let imagemQuizzURL;
 let numDePerguntas;
 let numDeNiveis;
 
+//                                 A VARIÁVEL A BAIXO É A QUE SERÁ ENVIADA PARA O SERVIDOR
 let userQuizz = {
   title: "",
   image: "",
   questions: [],
   levels: []
 }
+
 
 function informacoesBasicasQuizz(){
   tituloQuizz = 0;
@@ -234,6 +237,7 @@ function informacoesBasicasQuizz(){
   const alerta = document.querySelector('.comecoCriaQuizz .invisible');
   console.log(tituloQuizz, imagemQuizzURL ,numDeNiveis ,numDePerguntas);
 
+  //                                  AQUI EMBAIXO SALVA O TITULO E IMAGEM
   userQuizz.title = tituloQuizz;
   userQuizz.image = imagemQuizzURL;
 
@@ -343,8 +347,13 @@ function informacoesNivelQuizz(){
     text: elemento4[i].value,
     minValue: elemento2[i].value});
   }
+
+
+  //                       AQUI EMBAIXO ESTÁ SALVANDO OS NÍVEIS
   userQuizz.levels=[]
   userQuizz.levels.push(niveis);
+  //Esvazia primeiro pra limpar caso o usuário for querer criar mais um Quizz
+  //depois e não recarregar a página
   elemento1.forEach((valor)=> {valor.value = "";});
   elemento2.forEach((valor)=> {valor.value = "";});
   elemento3.forEach((valor)=> {valor.value = "";});

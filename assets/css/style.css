@@ -328,7 +328,7 @@ ion-icon:hover {
   margin-top: 20px;
 }
 
-.alternatives-box p .alternative-text{
+.alternatives-box p.alternative-text{
   width: 329px;
   font-weight: 700;
   font-size: 20px;

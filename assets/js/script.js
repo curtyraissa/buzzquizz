@@ -225,6 +225,7 @@ function informacoesBasicasQuizz(){
   if(tituloQuizz&&imagemQuizzURL&&numDePerguntas&&numDeNiveis){
     document.querySelector('.comecoCriaQuizz').classList.add('hide');
     document.querySelector('.perguntasCriaQuizz').classList.remove('hide');
+    criaPaginaDosNiveis();
     elemento1.value = "";
     elemento2.value = "";
     elemento3.value = "";
@@ -243,9 +244,59 @@ function mensagemAlerta(texto){
 //Pega as informações do nível (2ª página)
 
 function criarPerguntasQuizz(){
-  document.querySelector('.perguntasCriaQuizz.comecoCriaQuizz').classList.add('hide');
-  document.querySelector('.nivelCriaQuizz').classList.remove('hide');
-  criaPaginaDosNiveis();
+  //Verificações dos dados
+  let cont = 0;
+  let aux = true;
+  //let aux2 = false;
+  const cores = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','A','B','C','D','E','F'];
+  const alerta = document.querySelector('.perguntasCriaQuizz .invisible');
+  const textoPergunta = document.querySelectorAll('.question-text');
+  const corPergunta = document.querySelectorAll('.question-color');
+  const respostaPergunta = document.querySelectorAll('.resposta');
+  
+  textoPergunta.forEach((valor)=>{
+    console.log(valor.value.length);
+    if(valor.value.length<20){
+      aux = false;
+    }
+  });
+
+  corPergunta.forEach((valor)=>{
+    if(!(valor.value[0].includes('#')&&valor.value.length===7)){
+      aux=false;
+      return;
+    }
+    for(let i=1;i<7;i++){
+      let a = false
+      for(let j=0;j<cores.length;j++){
+        if(valor.value[i]==cores[j]){
+          a = true;
+        }
+      }
+      if(a==false){
+        aux = a;
+        return;
+      }
+      }
+    });
+    respostaPergunta.forEach((valor)=>{
+      if(!valor.value){
+        cont++;
+        console.log(cont);
+      }});
+    if(cont>2){
+      aux=false;
+    }
+
+
+  if(!(aux)){
+    console.log(textoPergunta);
+    mensagemAlerta(alerta);
+  }else{
+    document.querySelector('.perguntasCriaQuizz.comecoCriaQuizz').classList.add('hide');
+    document.querySelector('.nivelCriaQuizz').classList.remove('hide');
+    criaPaginaDosNiveis();
+  }
 }
 
 //Pega as informações do nível (3ª página)
@@ -274,6 +325,10 @@ function criaPaginaDosNiveis(){
   boxForm.innerHTML+=`
   <p class="invisible">Os dados inseridos não são válidos!</p>
   <button onclick="informacoesNivelQuizz()">Finalizar Quizz</button>`
+}
+
+function criarPaginaDasPerguntas(){
+
 }
 
 function informacoesNivelQuizz(){
@@ -338,6 +393,13 @@ function informacoesNivelQuizz(){
 }
 
 function criaPaginaFinalização(){
+  document.querySelector('.pageSucessoQuizz').innerHTML=` 
+  <p class="pageSucessoQuizz-title">Seu quizz está pronto!</p>
+  <div class="pageSucessoQuizz-img"></div>
+  <div class="pageSucessoQuizz-botao">
+      <button onclick="">Acessar Quizz</button>
+      <div class="botaoVoltar" onclick="returnHome()">Voltar pra home</div>
+  </div>`;
   document.querySelector('.pageSucessoQuizz-img').innerHTML = `
   <img src="${imagemQuizzURL}" alt="Imagem do seu quizz">
   <p>${tituloQuizz}</p>

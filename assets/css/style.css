@@ -405,6 +405,7 @@ height: 175.2px;
   font-weight: 700;
   font-size: 23px;
   line-height: 27px;
+  margin-top: 63px;
   margin-bottom: 48px;
 }
 
@@ -477,6 +478,7 @@ height: 175.2px;
   width: 100%;
   font-size: 20px;
   line-height: 23px;
+  padding: 0 20px 0 16px;
 }
 
 .container {

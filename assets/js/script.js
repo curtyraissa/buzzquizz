@@ -45,15 +45,18 @@ function renderChoosenQuizz(quizzInfo){
   <div id="${quizzInfo.data.id}" class="banner-quizz" style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url(${quizzInfo.data.image})">
         <p>${quizzInfo.data.title}</p>
   </div>
+  <div class="quizz-things">
+  </div>
   `
   document.querySelector(".banner-quizz").scrollIntoView();
+  const quizzThings = document.querySelector(".quizz-things");
   //Aqui embaixo é inserido cada questão individual do Quizz
   for (let i=0; i<quizzInfo.data.questions.length;i++){
     /*
     Na função abaixo deve ser incluso a cor de cada pergunta individual!
                
     */
-    quizzes.innerHTML+=`
+    quizzThings.innerHTML+=`
     <div class="unanswered question-box">
       <div class="question-declaration" style="background-color:${quizzInfo.data.questions[i].color}">
         <p>${quizzInfo.data.questions[i].title}</p>
@@ -150,28 +153,34 @@ function answerCheck() {
       }
     }
 		}
-  const quizzes = document.querySelector(".allQuizzes");
-	quizzes.innerHTML += `
+  const quizzThings = document.querySelector(".quizz-things");
+	quizzThings.innerHTML += `
         <div class="resultado-quizz">
-          <div>
+          <div class="acerto-e-title">
             <p>${correctAnswerPercent}% de acerto: ${storedValueLevel.title}</p>
           </div>
-          <div>
+          <div class="results-image-text">
             <img src="${storedValueLevel.image}" alt="">
             <p>${storedValueLevel.text}</p>
           </div>
         </div>
-        <button class="restart-quizz" onclick="restartQuizz()">
-          Reiniciar Quizz
-        </button>
-        <button class="return-home" onclick="returnHome()">
-          Voltar para home
-        </button>
+        <div>
+          <button class="restart-quizz" onclick="restartQuizz()">
+            Reiniciar Quizz
+          </button>
+          <button class="return-home" onclick="returnHome()">
+            Voltar para home
+          </button>
+        </div>
       `;
+  document.querySelector(".restart-quizz").parentNode.classList.add("result-bottom-buttons")
   setTimeout(autoScrollQuizzResult, 2000)
 }
 function restartQuizz(){
-    document.querySelector(".allQuizzes.quizz-page-width").classList.replace("quizz-page-width","main-page-width")
+    if (document.querySelector(".allQuizzes.quizz-page-width")!= null){
+      document.querySelector(".allQuizzes.quizz-page-width").classList.replace("quizz-page-width","main-page-width")
+
+    }
     const selectionID= currentQuizzData.data.id
     const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${selectionID}`)
     promise.then(renderChoosenQuizz);

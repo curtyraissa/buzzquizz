@@ -254,6 +254,7 @@ function informacoesBasicasQuizz(){
     document.querySelector('.comecoCriaQuizz').classList.add('hide');
     document.querySelector('.perguntasCriaQuizz').classList.remove('hide');
     criaPaginaDosNiveis();
+    criarPaginaDasPerguntas();
     elemento1.value = "";
     elemento2.value = "";
     elemento3.value = "";
@@ -273,25 +274,69 @@ function mensagemAlerta(texto){
 
 function criarPerguntasQuizz(){
   //Verificações dos dados
-  let cont = 0;
   let aux = true;
-  //let aux2 = false;
   const cores = [0,1,2,3,4,5,6,7,8,9,'a','b','c','d','e','f','A','B','C','D','E','F'];
+
   const alerta = document.querySelector('.perguntasCriaQuizz .invisible');
   const textoPergunta = document.querySelectorAll('.question-text');
   const corPergunta = document.querySelectorAll('.question-color');
-  const respostaPergunta = document.querySelectorAll('.resposta');
-  
+  const imagemPergunta = document.querySelectorAll('.imagemURL');
+
+  let respostaPergunta = [];
+  let imagemURLPergunta = [];
+//Verifica a existencia de pelo menos duas respostas e duas imagens
+  for(let i=0; i<numDePerguntas;i++){
+    
+    let variavel1 = document.querySelector('.perguntasCriaQuizz').querySelectorAll(`.resposta${i+1}`);
+    let variavel2 = document.querySelector('.perguntasCriaQuizz').querySelectorAll(`.imagemQuizz${i+1}`);
+    if(!(variavel1[0].value&&variavel2[0].value)){
+      aux = false;
+      return;
+    }
+    const guardaValores1 = [];
+    const guardaValores2 = [];
+    let cont = 0;
+    variavel1.forEach((valor)=>{
+      guardaValores1.push(valor.value);
+      if(!valor.value){
+        cont++;
+      }
+    })
+    if(cont>2){
+      aux = false;
+      console.log('erro');
+      return;
+    }
+    cont = 0;
+    variavel2.forEach((valor)=>{
+      guardaValores2.push(valor.value);
+      if(!valor.value){
+        cont++;
+      }
+    })
+    if(cont>2){
+      aux = false;
+      console.log('erro');
+      return;
+    }
+    respostaPergunta.push(guardaValores1);
+    imagemURLPergunta.push(guardaValores2);
+  }
+  console.log(respostaPergunta);
+  console.log(imagemURLPergunta);
+  //Verifica tamanho da pergunta
   textoPergunta.forEach((valor)=>{
-    console.log(valor.value.length);
     if(valor.value.length<20){
+      console.log('tamanho da pergunta');
       aux = false;
     }
   });
-
+  //Verifica se a cor está no formato certo
   corPergunta.forEach((valor)=>{
+    console.log(valor.value[0]);
     if(!(valor.value[0].includes('#')&&valor.value.length===7)){
       aux=false;
+      console.log('cor sem #');
       return;
     }
     for(let i=1;i<7;i++){
@@ -303,27 +348,50 @@ function criarPerguntasQuizz(){
       }
       if(a==false){
         aux = a;
+        console.log('cor');
         return;
       }
       }
-    });
-    respostaPergunta.forEach((valor)=>{
-      if(!valor.value){
-        cont++;
-        console.log(cont);
-      }});
-    if(cont>2){
-      aux=false;
+  });
+    //Verifica se as imagens são URL's
+  imagemPergunta.forEach((valor)=>{
+    if(valor.value){
+      try {
+        let url = new URL (valor.value)
+      } catch(err) {
+        aux = false;
+        console.log('Url');
+        return;
+        
+      }
     }
-
+  
+  });
+    //Cria o objeto Pergunta
+  
+  for(let i=0; i<numDePerguntas;i++){
+    let perguntaObject = {title: textoPergunta[i].value,
+    color: corPergunta[i].value,
+    answers: []};
+    for(let j =0; j<4;j++){
+      let a = (j===0?true:false);
+      if(respostaPergunta[i][j]&&imagemURLPergunta[i][j]){
+        let resposta = {
+          text: respostaPergunta[i][j],
+          image: imagemURLPergunta[i][j],
+          isCorrectAnswer: a}
+          perguntaObject.answers.push(resposta);
+      }
+    }
+    userQuizz.questions.push(perguntaObject);
+  }
 
   if(!(aux)){
-    console.log(textoPergunta);
     mensagemAlerta(alerta);
   }else{
+    document.querySelectorAll('.perguntasCriaQuizz input').forEach((valor)=>{valor.value = '';});
     document.querySelector('.perguntasCriaQuizz.comecoCriaQuizz').classList.add('hide');
     document.querySelector('.nivelCriaQuizz').classList.remove('hide');
-    criaPaginaDosNiveis();
   }
 }
 
@@ -356,7 +424,34 @@ function criaPaginaDosNiveis(){
 }
 
 function criarPaginaDasPerguntas(){
-
+  const paginaDasPerguntas = document.querySelector('.perguntasCriaQuizz');
+  paginaDasPerguntas.innerHTML = `<p class="comecoCriaQuizz-title">Crie suas perguntas</p>`;
+  for(let i = 0; i<numDePerguntas; i++){
+    paginaDasPerguntas.innerHTML+=`
+    <div class="box-form pt-00">
+      <div class="container">
+        <p>Pergunta ${i+1}</p>
+        <ion-icon onclick="abreFormulario(this)" name="create-outline"></ion-icon>
+      </div>
+      <form class="hide">
+        <input class="question-text" type="text" placeholder="Texto da pergunta">
+        <input class="question-color" type="url" placeholder="Cor do fundo da pergunta">
+        <p class="comecoCriaQuizz-question mt-18">Resposta correta</p>
+        <input class="resposta${i+1}" type="text" placeholder="Resposta correta">
+        <input class="imagemQuizz${i+1} imagemURL" type="text" placeholder="URL da imagem">
+        <p class="comecoCriaQuizz-question mt-18">Resposta incorretas</p>
+        <input class="resposta${i+1}" type="text" placeholder="Resposta correta 1">
+        <input class="imagemQuizz${i+1} imagemURL" type="text" placeholder="URL da imagem 1">
+        <input class="mt-18 resposta${i+1}" type="text" placeholder="Resposta correta 2">
+        <input class="imagemQuizz${i+1} imagemURL" type="text" placeholder="URL da imagem 2">
+        <input class="mt-18 resposta${i+1}" type="text" placeholder="Resposta correta 3">
+        <input class="imagemQuizz${i+1} imagemURL" type="text" placeholder="URL da imagem 3">
+      </form>
+    </div>`
+  }
+  paginaDasPerguntas.innerHTML+=`
+  <p class="invisible">Os dados inseridos não são válidos!</p>
+  <button onclick="criarPerguntasQuizz()">Prosseguir pra criar níveis</button>`
 }
 
 function informacoesNivelQuizz(){
@@ -437,7 +532,7 @@ function criaPaginaFinalização(){
   </div>`;
 
   criarQuizz()
-  
+
   document.querySelector('.pageSucessoQuizz-img').innerHTML = `
   <img src="${imagemQuizzURL}" alt="Imagem do seu quizz">
   <p>${tituloQuizz}</p>

@@ -144,6 +144,11 @@ ion-icon:hover {
   opacity: .6;
 }
 
+.criaQuizz button ion-icon{
+  color:#EC362D;
+}
+
+
 .criaQuizz-icon {
   border-radius: 50px;
   color: var(--red);

@@ -368,27 +368,26 @@ function criarPerguntasQuizz(){
   
   });
     //Cria o objeto Pergunta
-  
-  for(let i=0; i<numDePerguntas;i++){
-    let perguntaObject = {title: textoPergunta[i].value,
-    color: corPergunta[i].value,
-    answers: []};
-    for(let j =0; j<4;j++){
-      let a = (j===0?true:false);
-      if(respostaPergunta[i][j]&&imagemURLPergunta[i][j]){
-        let resposta = {
-          text: respostaPergunta[i][j],
-          image: imagemURLPergunta[i][j],
-          isCorrectAnswer: a}
-          perguntaObject.answers.push(resposta);
-      }
-    }
-    userQuizz.questions.push(perguntaObject);
-  }
 
   if(!(aux)){
     mensagemAlerta(alerta);
   }else{
+    for(let i=0; i<numDePerguntas;i++){
+      let perguntaObject = {title: textoPergunta[i].value,
+      color: corPergunta[i].value,
+      answers: []};
+      for(let j =0; j<4;j++){
+        let a = (j===0?true:false);
+        if(respostaPergunta[i][j]&&imagemURLPergunta[i][j]){
+          let resposta = {
+            text: respostaPergunta[i][j],
+            image: imagemURLPergunta[i][j],
+            isCorrectAnswer: a}
+            perguntaObject.answers.push(resposta);
+        }
+      }
+      userQuizz.questions.push(perguntaObject);
+    }
     document.querySelectorAll('.perguntasCriaQuizz input').forEach((valor)=>{valor.value = '';});
     document.querySelector('.perguntasCriaQuizz.comecoCriaQuizz').classList.add('hide');
     document.querySelector('.nivelCriaQuizz').classList.remove('hide');
@@ -509,8 +508,7 @@ function informacoesNivelQuizz(){
 
 
   //                       AQUI EMBAIXO ESTÁ SALVANDO OS NÍVEIS
-  userQuizz.levels=[]
-  userQuizz.levels.push(niveis);
+  userQuizz.levels=niveis;
   //Esvazia primeiro pra limpar caso o usuário for querer criar mais um Quizz
   //depois e não recarregar a página
   elemento1.forEach((valor)=> {valor.value = "";});

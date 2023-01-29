@@ -402,6 +402,12 @@ function criarQuizzPostProcessing(variable){
   treatedUserId = JSON.parse("[" + userId + "]")
 }
 
+function PlayCreatedQuizz(){
+  const idOfLastQuizz = treatedUserId[treatedUserId.length-1];
+  const promise = axios.get(`https://mock-api.driven.com.br/api/v4/buzzquizz/quizzes/${idOfLastQuizz}`)
+  promise.then(renderChoosenQuizz);
+}
+
 function renderUserQuizzes(quizzInfo){
   getlocalStorage()
   reducePurgedUserId();

@@ -202,6 +202,7 @@ function autoScrollQuizzResult(){
 function abreCriacaoQuizz(){
   document.querySelector('.paginaInicial').classList.add('hide');
   document.querySelector('.comecoCriaQuizz').classList.remove('hide');
+  document.querySelector('.paginaCriacaoQuizz').classList.remove('hide');
 }
 function abreFormulario(caixa){
   caixa.parentNode.parentNode.querySelector('form').classList.toggle('hide');
@@ -441,11 +442,11 @@ function criarPaginaDasPerguntas(){
         <input class="resposta${i+1}" type="text" placeholder="Resposta correta">
         <input class="imagemQuizz${i+1} imagemURL" type="text" placeholder="URL da imagem">
         <p class="comecoCriaQuizz-question mt-18">Resposta incorretas</p>
-        <input class="resposta${i+1}" type="text" placeholder="Resposta correta 1">
+        <input class="resposta${i+1}" type="text" placeholder="Resposta incorreta 1">
         <input class="imagemQuizz${i+1} imagemURL" type="text" placeholder="URL da imagem 1">
-        <input class="mt-18 resposta${i+1}" type="text" placeholder="Resposta correta 2">
+        <input class="mt-18 resposta${i+1}" type="text" placeholder="Resposta incorreta 2">
         <input class="imagemQuizz${i+1} imagemURL" type="text" placeholder="URL da imagem 2">
-        <input class="mt-18 resposta${i+1}" type="text" placeholder="Resposta correta 3">
+        <input class="mt-18 resposta${i+1}" type="text" placeholder="Resposta incorreta 3">
         <input class="imagemQuizz${i+1} imagemURL" type="text" placeholder="URL da imagem 3">
       </form>
     </div>`
